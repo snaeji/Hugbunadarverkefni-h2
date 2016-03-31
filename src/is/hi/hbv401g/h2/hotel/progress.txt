@@ -1,0 +1,12 @@
+TextView:		0%
+TextinputController:	0%
+BookingManager:		?
+HotelManager:		?
+Booking:		?
+Room:			?
+Hotel:			?
+Traveler:		?
+Coordinates:		100%
+BookingDBController:	?
+HotelDBController:	?
+Database:		?
