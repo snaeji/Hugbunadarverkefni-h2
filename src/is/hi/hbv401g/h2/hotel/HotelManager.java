@@ -5,7 +5,7 @@ public class HotelManager {
 	private HotelDBController hotelDBController;
 
 	public HotelManager(){
-		hotelDBController = new HotelDBController();
+		this.hotelDBController = new HotelDBController();
 	};
 
 	public Room[] searchWithAddress(int minPrice,int maxPrice,int minStars,int maxStars,String[] amenities, String street, String city, String zipCode){

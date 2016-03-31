@@ -5,8 +5,8 @@ public class Coordinates{
 	private float latitude;
 
 	public Coordinates(float longtitude, float latitude){
-		longtitude = longtitude;
-		latitude = latitude;
+		this.longtitude = longtitude;
+		this.latitude = latitude;
 	};
 
 	public float[] getCoordinates(){
