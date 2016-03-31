@@ -6,16 +6,13 @@ public class HotelManager {
 
 	public HotelManager(){
 		hotelDBController = new HotelDBController();
-	}
+	};
 
 	public Room[] searchWithAddress(int minPrice,int maxPrice,int minStars,int maxStars,String[] amenities, String street, String city, String zipCode){
-		/* 
-		 	MISSING
-		*/
-	}
+		return hotelDBcontroller.searchWithAddress(minPrice,maxPrice,minStars,maxStars,amenities,street,city,zipCode);
+	};
+
 	public Room[] searchWithCoords(int minPrice,int maxPrice,int minStars,int maxStars,String[] amenities, float radius, Coordinates coords){
-		/* 
-		 	MISSING
-		*/
-	}
+		return hotelDBcontroller.searchWithCoords(minPrice,maxPrice,minStars,maxStars,amenities,radius,coords);
+	};
 }
