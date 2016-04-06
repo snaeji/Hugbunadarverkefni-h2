@@ -11,8 +11,9 @@ public class Booking {
 	private boolean hasReserved;
 	private Room room;
 
-	public Booking() {
+	public Booking(Room room) {
 		this.dateCreated = Calendar.getInstance();
+		this.room = room;
 	}
 
 	public Calendar getDateCreated() {
@@ -27,7 +28,8 @@ public class Booking {
 		return fromDate;
 	}
 	
-	package boolean containsRoom(Room room) {
+	boolean containsRoom(Room room) {
+		if (this.room.equals((Room.room)) return true;
 		return this.room == room;
 	}
 	
