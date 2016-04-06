@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.concurrent.TimeUnit;
 
 
 public class Room {
@@ -62,7 +63,7 @@ public class Room {
 		
 		int counter = 0;
 		for (Date systemDate : this.theseDates) {
-			counter++;
+				
 			Calendar calSys = Calendar.getInstance();
 			calSys.setTimeInMillis(0);
 			calSys.set(systemDate.getYear(), systemDate.getMonth(), systemDate.getDate(), 16, 00, 00);
@@ -71,6 +72,7 @@ public class Room {
 			if(dateFrom.before(systemDate)&&systemDate.before(dateTo)){
 				if(this.reservedCounter.get(counter)<amountOfRooms)return false;
 			}
+			counter++;
 		    
 		}
 		
@@ -78,7 +80,54 @@ public class Room {
 	}
 
 	public boolean reserve(Booking booking){
+		
 		/* MISSING LOGIC */
+		
+		Date dateFrom = booking.getFromDate().getTime();
+		Date dateTo = booking.getToDate().getTime();
+		
+		Calendar calFrom = Calendar.getInstance();
+		calFrom.setTimeInMillis(0);
+		calFrom.set(dateFrom.getYear(), dateFrom.getMonth(), dateFrom.getDate(), 16, 0, 0);
+		dateFrom = calFrom.getTime(); // get back a Date object
+		
+		Calendar calTo = Calendar.getInstance();
+		calTo.setTimeInMillis(0);
+		calTo.set(dateTo.getYear(), dateTo.getMonth(), dateTo.getDate(), 16, 0, 0);
+		dateTo = calTo.getTime(); // get back a Date object
+		
+		long oneDay = TimeUnit.DAYS.toMillis(1);
+		
+		while(!dateFrom.after(dateTo)){
+			boolean b = false;
+			int counter = 0;
+			for (Date systemDate : this.theseDates) {
+				// Check if dateFrom is in theseDates
+				Calendar calSys = Calendar.getInstance();
+				calSys.setTimeInMillis(0);
+				calSys.set(systemDate.getYear(), systemDate.getMonth(), systemDate.getDate(), 16, 0, 0);
+				systemDate = calSys.getTime(); // get back a Date object
+				
+			    if(dateFrom.compareTo(systemDate)==0){
+			    	this.reservedCounter.set(counter, this.reservedCounter.get(counter)-1); //vantar amountOfRooms?
+			    	b = true;
+			    	break;
+			    }
+			    counter++;
+			}
+			if(b==false){
+				// insert new date, add dateFrom to List
+				theseDates.add(dateFrom);
+				// add reservedCounter
+				reservedCounter.add(this.roomCount-1); //amount of rooms?
+			}
+			//increase dateFrom
+			dateFrom = new Date(dateFrom.getTime()+oneDay);
+		}
+		
+		//Change reservedCounter and reservedRooms in Database... ?
+		// Change to void function? 
+		
 		return true;
 	}
 
