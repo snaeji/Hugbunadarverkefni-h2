@@ -3,6 +3,7 @@ package is.hi.hbv401g.h2.hotel;
 import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 
 public class Room {
@@ -47,13 +48,32 @@ public class Room {
 		return this.hotel;
 	}
 
-	public boolean isAvailable(Date dateFrom, Date dateTo){
-		/* MISSING LOGIC 
+	public boolean isAvailable(Date dateFrom, Date dateTo, int amountOfRooms){
+		if(amountOfRooms>this.roomCount) return false;
+		Calendar calFrom = Calendar.getInstance();
+		calFrom.setTimeInMillis(0);
+		calFrom.set(dateFrom.getYear(), dateFrom.getMonth(), dateFrom.getDate(), 0, 0, 0);
+		dateFrom = calFrom.getTime(); // get back a Date object
 		
-			List<Date> theseDates;
-			List<int> reservedCounter;
-
-		*/
+		Calendar calTo = Calendar.getInstance();
+		calTo.setTimeInMillis(0);
+		calTo.set(dateTo.getYear(), dateTo.getMonth(), dateTo.getDate(), 23, 59, 59);
+		dateTo = calTo.getTime(); // get back a Date object
+		
+		int counter = 0;
+		for (Date systemDate : this.theseDates) {
+			counter++;
+			Calendar calSys = Calendar.getInstance();
+			calSys.setTimeInMillis(0);
+			calSys.set(systemDate.getYear(), systemDate.getMonth(), systemDate.getDate(), 16, 00, 00);
+			systemDate = calSys.getTime(); // get back a Date object
+			
+			if(dateFrom.before(systemDate)&&systemDate.before(dateTo)){
+				if(this.reservedCounter.get(counter)<amountOfRooms)return false;
+			}
+		    
+		}
+		
 		return true;
 	}
 
