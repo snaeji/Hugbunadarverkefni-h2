@@ -5,38 +5,70 @@ import java.util.Calendar;
 
 public class Booking {
 	
-	private Calendar fromDate;
-	private Calendar toDate;
-	private Calendar dateCreated;
+	private Date fromDate;
+	private Date toDate;
+	private Date dateCreated;
 	private boolean hasReserved;
-	private Room room;
+	private Room[] rooms;
 
-	public Booking(Room room) {
-		this.dateCreated = Calendar.getInstance();
-		this.room = room;
+	public Booking(Traveler traveler, Room[] room, Date fromDate, Date toDate) {
+		long now = System.currentTimeMillis();
+		this.dateCreated = new Date(now);
+		this.rooms = room;
+		this.fromDate = fromDate;
+		this.toDate = toDate;
+		this.hasReserved = false;
+		if(!room.reserve(this)) {
+			return null;
+		}
 	}
 
-	public Calendar getDateCreated() {
+	public Date getDateCreated() {
 		return dateCreated;
 	}
 	
-	public Calendar getToDate() {
+	public Date getToDate() {
 		return toDate;
 	}
 	
-	public Calendar getFromDate() {
+	public Date getFromDate() {
 		return fromDate;
 	}
 	
 	boolean containsRoom(Room room) {
-		if (this.room.equals((Room.room)) return true;
-		return this.room == room;
+		for(Room aRoom: rooms) {
+			if(aRoom == room) return true;
+		}
+		return false;
 	}
 	
-	package void reserve(void) {
-		// this can fail
-		room.reserve(fromDate, toDate, this);
+	void reserve() {
+		hasReserved = true;
 	}
-
 	
+	boolean hasReserved() {
+		return hasReserved;
+	}
+	
+	void cancelReserve() {
+		this.hasReserved = false;
+		room.cancelReserve(this);
+	}
+	
+	boolean setDates(Date nextToDate, Date nextFromDate) {
+		Date prevToDate = this.toDate;
+		Date prevFromDate = this.fromDate;
+		cancelReserve();
+		this.toDate = nextToDate;
+		this.fromDate = nextFromDate;
+		if(room.reserve(this)) {
+			return true;
+		}
+		this.toDate = prevToDate;
+		this.fromDate = prevFromDate;
+			if(room.reserve(this)){
+				return false;
+			}
+		}
+	}
 }
