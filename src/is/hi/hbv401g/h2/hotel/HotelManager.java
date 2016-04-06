@@ -9,10 +9,10 @@ public class HotelManager {
 	};
 
 	public Room[] searchWithAddress(int minPrice,int maxPrice,int minStars,int maxStars,String[] amenities, String street, String city, String zipCode){
-		return hotelDBcontroller.searchWithAddress(minPrice,maxPrice,minStars,maxStars,amenities,street,city,zipCode);
+		return hotelDBController.searchWithAddress(minPrice,maxPrice,minStars,maxStars,amenities,street,city,zipCode);
 	};
 
 	public Room[] searchWithCoords(int minPrice,int maxPrice,int minStars,int maxStars,String[] amenities, float radius, Coordinates coords){
-		return hotelDBcontroller.searchWithCoords(minPrice,maxPrice,minStars,maxStars,amenities,radius,coords);
+		return hotelDBController.searchWithCoords(minPrice,maxPrice,minStars,maxStars,amenities,radius,coords);
 	};
 }

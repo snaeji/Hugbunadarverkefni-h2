@@ -15,7 +15,9 @@ public class Coordinates{
 		return coordinates;
 	};
 
-	public float distanceTo(Coordinates coords){
+	// NOT FINISHED
+	public double distanceTo(Coordinates coords){
 		/* MISSING LOGIC*/
+		return 0.0;
 	};
 }
