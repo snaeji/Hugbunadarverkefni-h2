@@ -4,39 +4,36 @@ import java.util.Calendar;
 
 public class BookingManager {
 	private BookingDBController bookingDBController = new BookingDBController();
-	private Booking[] bookings;
+//	private Booking[] bookings;
 	
-	// NOT STARTED
-	public Booking book(Room[] rooms, Traveler traveler, Calendar dateFrom, Calendar dateTo) {
-		Booking booking = new Booking(traveler, room, from, to);
-		
-		
-		
-		return new Booking();
+	
+	// FINISHED
+	public Booking book(Traveler traveler, Room[] rooms, Calendar fromDate, Calendar toDate) {
+		Booking booking = new Booking(traveler, rooms, fromDate, toDate);
+		bookingDBController.book(booking);
+		return booking;
 	}
 	
-	// NOT STARTED
+	// FINISHED
 	Booking[] getBookings() {
-		
-		Booking[] bookings = new Booking[0];
-		return bookings;
+		return bookingDBController.getBookings();
 	}
 	
-	// NOT STARTED
+	// FINISHED
 	public Booking[] getBookingsByTraveler(Traveler traveler) {
-		
-		Booking[] bookings = new Booking[0];
+		Booking[] bookings = bookingDBController.getBookingsByTraveler(traveler);
 		return bookings;
 	}
 	
-	// NOT STARTED
+	// FINISHED
 	public void cancelBooking(Booking booking) {
-		
+		bookingDBController.cancelBooking(booking);
+		booking.cancelReserve();
 	}
 	
-	// NOT STARTED
-	public boolean editBooking(Booking booking, Calendar dateTo, Calendar dateFrom) {
-		
+	// FINISHED
+	public boolean editBooking(Booking booking, Calendar fromDate, Calendar toDate) {
+		if(booking.setDates(fromDate, toDate)) return true;
 		return false;
 	}
 }
