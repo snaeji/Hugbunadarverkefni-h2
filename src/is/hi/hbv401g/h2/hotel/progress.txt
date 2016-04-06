@@ -1,12 +1,12 @@
-TextView:		0%
+TextView:				0%
 TextInputController:	0%
-BookingManager:		50%		fara yfir mögulegar villur eftir að búið er að commita Booking
-HotelManager:		99%		kannski breyta amenities r some?
-Booking:		?
-Room:			70%		vantar logic fyrir isAvailable, reserve, cancelBooking
-Hotel:			100%
-Traveler:		?
-Coordinates:		90%		vantar distanceTo()
+BookingManager:			50%		fara yfir mögulegar villur eftir að búið er að commita Booking
+HotelManager:			99%		kannski breyta amenities r some?
+Booking:				?
+Room:					70%		vantar logic fyrir isAvailable, reserve, cancelBooking
+Hotel:					100%
+Traveler:				?		útfært af GUI grúppunni
+Coordinates:			90%		vantar distanceTo()
 BookingDBController:	?
-HotelDBController:	?
-Database:		?
+HotelDBController:		?
+Database:				?

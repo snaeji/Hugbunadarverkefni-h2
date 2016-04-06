@@ -14,10 +14,10 @@ public class BookingManager {
 		return booking;
 	}
 	
-	// FINISHED
-	Booking[] getBookings() {
-		return bookingDBController.getBookings();
-	}
+	// NOT USED - SHOULD BE REMOVED?
+//	Booking[] getBookings() {
+//		return bookingDBController.getBookings();
+//	}
 	
 	// FINISHED
 	public Booking[] getBookingsByTraveler(Traveler traveler) {
