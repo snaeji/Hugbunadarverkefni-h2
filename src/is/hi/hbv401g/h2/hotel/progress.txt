@@ -1,12 +1,12 @@
 TextView:		0%
 TextinputController:	0%
 BookingManager:		?
-HotelManager:		?
+HotelManager:		99%		kannski breyta amenities r some?
 Booking:		?
-Room:			?
-Hotel:			?
+Room:			70%		vantar logic fyrir isAvailable, reserve, cancelBooking
+Hotel:			100%
 Traveler:		?
-Coordinates:		100%
+Coordinates:		90%		vantar distanceTo()
 BookingDBController:	?
 HotelDBController:	?
 Database:		?

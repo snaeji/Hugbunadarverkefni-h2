@@ -1,16 +1,17 @@
 package is.hi.hbv401g.h2.hotel;
 
 public class Hotel {
-	int stars;
-	String name;
-	String type;
-	String street;
-	String streetNumber;
-	String city;
-	String zipCode;
-	Room[] rooms;
+	private int stars;
+	private String name;
+	private String type;
+	private String street;
+	private String streetNumber;
+	private String city;
+	private String zipCode;
+	private Room[] rooms;
+	private Coordinates coordinates;
 	
-	public Hotel(int stars, String name, String type, String street, String streetNumber, String city, String zipCode) {
+	public Hotel(int stars, String name, String type, String street, String streetNumber, String city, String zipCode, Room[] rooms, Coordinates coordinates) {
 		this.stars = stars;
 		this.name = name;
 		this.type = type;
@@ -18,6 +19,8 @@ public class Hotel {
 		this.streetNumber = streetNumber;
 		this.city = city;
 		this.zipCode = zipCode;
+		this.rooms = rooms;
+		this.coordinates = coordinates;
 	}
 	
 	public int getStars() {
@@ -25,26 +28,30 @@ public class Hotel {
 	}
 	
 	public String getName() {
-		return name;
+		return this.name;
 	}
 	
 	public String getType() {
-		return type;
+		return this.type;
 	}
 	
 	public Room[] getRooms() {
-		return rooms;
+		return this.rooms;
 	}
 	
 	public String getStreet() {
-		return street;
+		return this.street;
 	}
 	
 	public String getCity() {
-		return city;
+		return this.city;
 	}
 	
-	public int getZipCode() {
-		return zipCode;
+	public String getZipCode() {
+		return this.zipCode;
+	}
+
+	public Coordinates getCoordinates(){
+		return this.coordinates;
 	}
 }

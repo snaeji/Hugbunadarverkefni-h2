@@ -1,4 +1,5 @@
 package is.hi.hbv401g.h2.hotel;
+
 public class Coordinates{
 
 	private float longtitude;
@@ -15,6 +16,6 @@ public class Coordinates{
 	};
 
 	public float distanceTo(Coordinates coords){
-		/* MISSING */
+		/* MISSING LOGIC*/
 	};
 }
