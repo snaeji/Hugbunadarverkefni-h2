@@ -1,5 +1,5 @@
 TextView:		0%
-TextinputController:	0%
+TextInputController:	0%
 BookingManager:		?
 HotelManager:		99%		kannski breyta amenities r some?
 Booking:		?

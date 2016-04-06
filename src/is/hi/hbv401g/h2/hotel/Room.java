@@ -43,16 +43,20 @@ public class Room {
 		return this.hotel;
 	}
 
-	public boolean isAvailable(Date date){
-		/* MISSING LOGIC */
+	public boolean isAvailable(Date dateFrom, Date dateTo){
+		/* MISSING LOGIC 
+		
+			List<Date> theseDates;
+			List<int> reservedCounter;
 
+		*/
 	}
 
-	public boolean reserve(Date dateTo, Date dateFrom, Booking booking){
+	public boolean reserve(Date dateFrom, Date dateTo, Booking booking){
 		/* MISSING LOGIC */
 	}
 
-	public void cancelReserve(Date dateTo, Date dateFrom, Booking booking){
+	public void cancelReserve(Date dateFrom, Date dateTo, Booking booking){
 		/* MISSING LOGIC */
 	}
 }
