@@ -10,3 +10,7 @@ Coordinates:		90%		vantar distanceTo()
 BookingDBController:	?
 HotelDBController:	?
 Database:		?
+
+
+
+Haukur er að vinna í booking
