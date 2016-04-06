@@ -2,6 +2,8 @@ package is.hi.hbv401g.h2.hotel;
 
 import java.util.Date;
 import java.util.List;
+import java.util.ArrayList;
+
 
 public class Room {
 
@@ -10,17 +12,17 @@ public class Room {
 	private int beds;
 	private int bedrooms;
 	private int roomCount;
-	private List<Date> reservedDates;
-	private List<Integer> reservedCounter;
+	private List<Date> theseDates = new ArrayList<Date>();
+	private List<Integer> reservedCounter = new ArrayList<Integer>();
 	private Hotel hotel;
 
-	public Room(int price, int area, int beds, int bedrooms, int roomCount, List<Date> reservedDates, List<Integer> reservedCounter, Hotel hotel) {
+	public Room(int price, int area, int beds, int bedrooms, int roomCount, List<Date> theseDates, List<Integer> reservedCounter, Hotel hotel){
 		this.price = price;
 		this.area = area;
 		this.beds = beds;
 		this.bedrooms = bedrooms;
 		this.roomCount = roomCount;
-		this.reservedDates = reservedDates;
+		this.theseDates = theseDates;
 		this.reservedCounter = reservedCounter;
 		this.hotel = hotel;
 	};
@@ -45,7 +47,6 @@ public class Room {
 		return this.hotel;
 	}
 
-	// NOT FINISHED
 	public boolean isAvailable(Date dateFrom, Date dateTo){
 		/* MISSING LOGIC 
 		
@@ -53,16 +54,15 @@ public class Room {
 			List<int> reservedCounter;
 
 		*/
-		return false;
+		return true;
 	}
 
-	// NOT FINISHED
-	public boolean reserve(Date dateFrom, Date dateTo, Booking booking){
+	public boolean reserve(Booking booking){
 		/* MISSING LOGIC */
-		return false;
+		return true;
 	}
 
-	public void cancelReserve(Date dateFrom, Date dateTo, Booking booking){
+	public void cancelReserve(Booking booking){
 		/* MISSING LOGIC */
 	}
 }
