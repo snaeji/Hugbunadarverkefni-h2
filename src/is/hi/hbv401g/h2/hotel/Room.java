@@ -1,5 +1,7 @@
 package is.hi.hbv401g.h2.hotel;
 
+import java.util.Date;
+import java.util.List;
 
 public class Room {
 
@@ -8,17 +10,17 @@ public class Room {
 	private int beds;
 	private int bedrooms;
 	private int roomCount;
-	private List<Date> theseDates;
-	private List<int> reservedCounter;
+	private List<Date> reservedDates;
+	private List<Integer> reservedCounter;
 	private Hotel hotel;
 
-	public Room(int price, int area, int beds, int bedrooms, int roomCount, List<Date> theseDates, List<int> reservedCounter, Hotel hotel){
+	public Room(int price, int area, int beds, int bedrooms, int roomCount, List<Date> reservedDates, List<Integer> reservedCounter, Hotel hotel) {
 		this.price = price;
 		this.area = area;
 		this.beds = beds;
 		this.bedrooms = bedrooms;
 		this.roomCount = roomCount;
-		this.theseDates = theseDates;
+		this.reservedDates = reservedDates;
 		this.reservedCounter = reservedCounter;
 		this.hotel = hotel;
 	};
@@ -43,6 +45,7 @@ public class Room {
 		return this.hotel;
 	}
 
+	// NOT FINISHED
 	public boolean isAvailable(Date dateFrom, Date dateTo){
 		/* MISSING LOGIC 
 		
@@ -50,10 +53,13 @@ public class Room {
 			List<int> reservedCounter;
 
 		*/
+		return false;
 	}
 
+	// NOT FINISHED
 	public boolean reserve(Date dateFrom, Date dateTo, Booking booking){
 		/* MISSING LOGIC */
+		return false;
 	}
 
 	public void cancelReserve(Date dateFrom, Date dateTo, Booking booking){
