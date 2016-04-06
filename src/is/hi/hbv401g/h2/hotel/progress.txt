@@ -1,6 +1,6 @@
 TextView:		0%
 TextInputController:	0%
-BookingManager:		?
+BookingManager:		50%		fara yfir mögulegar villur eftir að búið er að commita Booking
 HotelManager:		99%		kannski breyta amenities r some?
 Booking:		?
 Room:			70%		vantar logic fyrir isAvailable, reserve, cancelBooking
@@ -10,7 +10,3 @@ Coordinates:		90%		vantar distanceTo()
 BookingDBController:	?
 HotelDBController:	?
 Database:		?
-
-
-
-Haukur er að vinna í booking
