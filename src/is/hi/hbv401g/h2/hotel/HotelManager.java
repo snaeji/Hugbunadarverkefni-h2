@@ -12,7 +12,7 @@ public class HotelManager {
 		return hotelDBController.searchWithAddress(minPrice,maxPrice,minStars,maxStars,street,city,zipCode);
 	};
 
-	public Room[] searchWithCoords(int minPrice,int maxPrice,int minStars,int maxStars, float radius, Coordinates coords){
+	public Room[] searchWithCoords(int minPrice,int maxPrice,int minStars,int maxStars, double radius, Coordinates coords){
 		return hotelDBController.searchWithCoords(minPrice,maxPrice,minStars,maxStars,radius,coords);
 	};
 }

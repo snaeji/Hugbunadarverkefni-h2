@@ -10,7 +10,7 @@ public class TextView {
 		greet();
 	}
 	
-	private void greet() {
+	void greet() {
 		System.out.println("Sup Mister Smith");
 	}
 	
@@ -39,14 +39,16 @@ public class TextView {
 	}
 	
 	String[] askForSearchParametersCoords() {
-		String[] searchParameters = new String[6];
+		String[] searchParameters = new String[7];
 		System.out.println("Please insert your search parameters:");
 		searchParameters[0] = console.readLine("Minimum price: ");
 		searchParameters[1] = console.readLine("Maximum price: ");
 		searchParameters[2] = console.readLine("Minimum stars: ");
 		searchParameters[3] = console.readLine("Maximum stars: ");
 		searchParameters[4] = console.readLine("Search radius: ");
-		searchParameters[5] = console.readLine("Search coordinates: ");
+		System.out.println("Coordinates:");
+		searchParameters[5] = console.readLine("Longitude: ");
+		searchParameters[6] = console.readLine("Latitude: ");
 		return searchParameters;
 	}
 	
