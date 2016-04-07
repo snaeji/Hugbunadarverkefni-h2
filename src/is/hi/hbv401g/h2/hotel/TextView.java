@@ -11,14 +11,27 @@ public class TextView {
 		System.out.println("Sup Mister Smith");
 	}
 	
-	private void printSearchHelp() {
+	void printSearchHelp() {
 		System.out.println(searchHelpMessage);
 	}
 	
-	private void printSearchResults(Room[] searchResults) {
-		for(int i=0;i<searchResults;i++) {
-			System.out.println(x);
+	void printSearchResults(Room[] searchResults) {
+		System.out.println();
+		System.out.println("Search results:");
+		for(int i=0;i<searchResults.length;i++) {
+			System.out.print("Price: ");
+			System.out.println(searchResults[i].getPrice());
+			System.out.print("Area: ");
+			System.out.println(searchResults[i].getArea());
+			System.out.print("Number of beds: ");
+			System.out.println(searchResults[i].getBeds());
+			System.out.print("Number of bedrooms: ");
+			System.out.println(searchResults[i].getBedrooms());
+			System.out.print("Hotel name: ");
+			System.out.println(searchResults[i].getHotel());
+			System.out.println();
 		}
+		System.out.println();
 	}
 	
 	
