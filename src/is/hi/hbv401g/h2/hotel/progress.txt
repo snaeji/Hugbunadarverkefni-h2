@@ -7,7 +7,7 @@ Booking:			70%?
 Room:				90%		vantar að update-a DB fyrir reserve og cancelReserve
 Hotel:				90%		Annaðhvort hótel yfir rooms, eða rooms yfir hotel, ekki bæði.
 Traveler:			100%		útfært af GUI grúppunni
-Coordinates:			70%		vantar distanceTo()
+Coordinates:			100%		
 BookingDBController:		?
 HotelDBController:		?
 Database:			50%
