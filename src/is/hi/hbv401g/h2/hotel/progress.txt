@@ -1,6 +1,6 @@
 
-TextView:			0%
-TextInputController:		0%
+TextView:			90%		Bug testing left (bæta kannski við booking support og double check að parameters séu rétt tög)
+TextInputController:		90%		Bug testing left (bæta kannski við booking support)
 BookingManager:			90%		fara yfir mögulegar villur eftir að búið er að commita Booking, þarf að yfirfara aðeins
 HotelManager:			100%		
 Booking:			90%		þarf að yfirfara aðeins

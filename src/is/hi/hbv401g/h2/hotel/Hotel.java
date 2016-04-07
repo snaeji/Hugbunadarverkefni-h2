@@ -43,6 +43,10 @@ public class Hotel {
 		return this.street;
 	}
 	
+	public String getStreetNumber() {
+		return this.streetNumber;
+	}
+	
 	public String getCity() {
 		return this.city;
 	}

@@ -5,7 +5,7 @@ public class TextInputController {
 //	private TextView textView;
 	private static HotelManager hotelManager;
 	private static TextView textView;
-	private static BookingManager bookingManager;
+//	private static BookingManager bookingManager;
 	
 	// Expect to get the input in one of the two following ways:
 	// searchWIthAddres: minPrice, maxPrice, minStars, maxStars, street, city, zipCode

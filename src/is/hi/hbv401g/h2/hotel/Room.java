@@ -49,6 +49,7 @@ public class Room {
 		return this.hotel;
 	}
 
+	@SuppressWarnings("deprecation")
 	public boolean isAvailable(Date dateFrom, Date dateTo, int amountOfRooms){
 		if(amountOfRooms>this.roomCount) return false;
 		Calendar calFrom = Calendar.getInstance();
@@ -79,6 +80,7 @@ public class Room {
 		return true;
 	}
 
+	@SuppressWarnings("deprecation")
 	public boolean reserve(Booking booking){
 		
 		/* MISSING LOGIC */
@@ -131,6 +133,7 @@ public class Room {
 		return true;
 	}
 
+	@SuppressWarnings("deprecation")
 	public void cancelReserve(Booking booking){
 		/* MISSING LOGIC */
 		
