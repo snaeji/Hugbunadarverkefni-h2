@@ -10,4 +10,4 @@ Traveler:			100%		útfært af GUI grúppunni
 Coordinates:			70%		vantar distanceTo()
 BookingDBController:		?
 HotelDBController:		?
-Database:			?
+Database:			50%
