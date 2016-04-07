@@ -1,6 +1,6 @@
 package is.hi.hbv401g.h2.hotel;
 
-import java.util.Calendar;
+import java.util.Date;
 
 public class BookingManager {
 	private BookingDBController bookingDBController = new BookingDBController();
@@ -8,7 +8,7 @@ public class BookingManager {
 	
 	
 	// FINISHED
-	public Booking book(Traveler traveler, Room[] rooms, Calendar fromDate, Calendar toDate) {
+	public Booking book(Traveler traveler, Room[] rooms, Date fromDate, Date toDate) {
 		Booking booking = new Booking(traveler, rooms, fromDate, toDate);
 		bookingDBController.book(booking);
 		return booking;
@@ -32,7 +32,7 @@ public class BookingManager {
 	}
 	
 	// FINISHED
-	public boolean editBooking(Booking booking, Calendar fromDate, Calendar toDate) {
+	public boolean editBooking(Booking booking, Date fromDate, Date toDate) {
 		if(booking.setDates(fromDate, toDate)) return true;
 		return false;
 	}
