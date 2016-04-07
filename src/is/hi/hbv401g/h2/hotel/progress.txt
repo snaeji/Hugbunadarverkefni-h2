@@ -1,9 +1,9 @@
 
 TextView:			0%
 TextInputController:		0%
-BookingManager:			50%		fara yfir mögulegar villur eftir að búið er að commita Booking
+BookingManager:			90%		fara yfir mögulegar villur eftir að búið er að commita Booking, þarf að yfirfara aðeins
 HotelManager:			100%		
-Booking:			70%?
+Booking:			90%		þarf að yfirfara aðeins
 Room:				90%		vantar að update-a DB fyrir reserve og cancelReserve
 Hotel:				90%		Annaðhvort hótel yfir rooms, eða rooms yfir hotel, ekki bæði.
 Traveler:			100%		útfært af GUI grúppunni
