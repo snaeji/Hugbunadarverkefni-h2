@@ -18,7 +18,7 @@ public class Booking {
 		this.fromDate = fromDate;
 		this.toDate = toDate;
 		this.hasReserved = false;
-		if(!room.reserve(this)) {
+		if(!room.reserve(this)) { // ÞARF AÐ GERA LYKKJU HÉR ÞAR SEM ÞETTA ER FYLKI AF ROOM (IMPORTANT!?)
 			return null;
 		}
 	}
