@@ -14,17 +14,17 @@ public class Room {
 	private int beds;
 	private int bedrooms;
 	private int roomCount;
-	private List<Date> theseDates = new ArrayList<Date>();
+	private List<Date> reservedDates = new ArrayList<Date>();
 	private List<Integer> reservedCounter = new ArrayList<Integer>();
 	private Hotel hotel;
 
-	public Room(int price, int area, int beds, int bedrooms, int roomCount, List<Date> theseDates, List<Integer> reservedCounter, Hotel hotel){
+	public Room(int price, int area, int beds, int bedrooms, int roomCount, List<Date> reservedDates, List<Integer> reservedCounter, Hotel hotel){
 		this.price = price;
 		this.area = area;
 		this.beds = beds;
 		this.bedrooms = bedrooms;
 		this.roomCount = roomCount;
-		this.theseDates = theseDates;
+		this.reservedDates = reservedDates;
 		this.reservedCounter = reservedCounter;
 		this.hotel = hotel;
 	};
@@ -62,7 +62,7 @@ public class Room {
 		dateTo = calTo.getTime(); // get back a Date object
 		
 		int counter = 0;
-		for (Date systemDate : this.theseDates) {
+		for (Date systemDate : this.reservedDates) {
 				
 			Calendar calSys = Calendar.getInstance();
 			calSys.setTimeInMillis(0);
@@ -83,33 +83,33 @@ public class Room {
 		
 		/* MISSING LOGIC */
 		
-		Date dateFrom = booking.getFromDate().getTime();
-		Date dateTo = booking.getToDate().getTime();
+		Date dateFrom = new Date(booking.getFromDate().getTime());
+		Date dateTo = new Date(booking.getToDate().getTime());
 		
 		Calendar calFrom = Calendar.getInstance();
 		calFrom.setTimeInMillis(0);
 		calFrom.set(dateFrom.getYear(), dateFrom.getMonth(), dateFrom.getDate(), 16, 0, 0);
-		dateFrom = calFrom.getTime(); // get back a Date object
+		dateFrom = calFrom.getTime();
 		
 		Calendar calTo = Calendar.getInstance();
 		calTo.setTimeInMillis(0);
 		calTo.set(dateTo.getYear(), dateTo.getMonth(), dateTo.getDate(), 16, 0, 0);
-		dateTo = calTo.getTime(); // get back a Date object
+		dateTo = calTo.getTime();
 		
 		long oneDay = TimeUnit.DAYS.toMillis(1);
 		
 		while(!dateFrom.after(dateTo)){
 			boolean b = false;
 			int counter = 0;
-			for (Date systemDate : this.theseDates) {
-				// Check if dateFrom is in theseDates
+			for (Date systemDate : this.reservedDates) {
+				// Check if dateFrom is in reservedDates
 				Calendar calSys = Calendar.getInstance();
 				calSys.setTimeInMillis(0);
 				calSys.set(systemDate.getYear(), systemDate.getMonth(), systemDate.getDate(), 16, 0, 0);
-				systemDate = calSys.getTime(); // get back a Date object
+				systemDate = calSys.getTime();
 				
 			    if(dateFrom.compareTo(systemDate)==0){
-			    	this.reservedCounter.set(counter, this.reservedCounter.get(counter)-1); //vantar amountOfRooms?
+			    	this.reservedCounter.set(counter, this.reservedCounter.get(counter)-1);
 			    	b = true;
 			    	break;
 			    }
@@ -117,9 +117,9 @@ public class Room {
 			}
 			if(b==false){
 				// insert new date, add dateFrom to List
-				theseDates.add(dateFrom);
+				reservedDates.add(dateFrom);
 				// add reservedCounter
-				reservedCounter.add(this.roomCount-1); //amount of rooms?
+				reservedCounter.add(this.roomCount-1);
 			}
 			//increase dateFrom
 			dateFrom = new Date(dateFrom.getTime()+oneDay);
@@ -133,5 +133,40 @@ public class Room {
 
 	public void cancelReserve(Booking booking){
 		/* MISSING LOGIC */
+		
+		Date dateFrom = new Date(booking.getFromDate().getTime());
+		Date dateTo = new Date(booking.getToDate().getTime());
+		
+		Calendar calFrom = Calendar.getInstance();
+		calFrom.setTimeInMillis(0);
+		calFrom.set(dateFrom.getYear(), dateFrom.getMonth(), dateFrom.getDate(), 16, 0, 0);
+		dateFrom = calFrom.getTime(); 
+		
+		Calendar calTo = Calendar.getInstance();
+		calTo.setTimeInMillis(0);
+		calTo.set(dateTo.getYear(), dateTo.getMonth(), dateTo.getDate(), 16, 0, 0);
+		dateTo = calTo.getTime(); 
+		
+		long oneDay = TimeUnit.DAYS.toMillis(1);
+		
+		while(!dateFrom.after(dateTo)){
+			int counter = 0;
+			for (Date systemDate : this.reservedDates) {
+				// Check if dateFrom is in reservedDates
+				Calendar calSys = Calendar.getInstance();
+				calSys.setTimeInMillis(0);
+				calSys.set(systemDate.getYear(), systemDate.getMonth(), systemDate.getDate(), 16, 0, 0);
+				systemDate = calSys.getTime();
+				
+			    if(dateFrom.compareTo(systemDate)==0){
+			    	this.reservedCounter.set(counter, this.reservedCounter.get(counter)+1);
+			    	break;
+			    }
+			    counter++;
+			}
+			dateFrom = new Date(dateFrom.getTime()+oneDay);
+		}
+		
+		//Change reservedCounter and reservedRooms in Database... ?
 	}
 }
