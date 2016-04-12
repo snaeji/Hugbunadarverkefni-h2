@@ -8,10 +8,12 @@ public class Hotel {
 	private String streetNumber;
 	private String city;
 	private String zipCode;
-	private Room[] rooms;
+	//private Room[] rooms;
 	private Coordinates coordinates;
-	
-	public Hotel(int stars, String name, String type, String street, String streetNumber, String city, String zipCode, Room[] rooms, Coordinates coordinates) {
+
+
+	//public Hotel(int stars, String name, String type, String street, String streetNumber, String city, String zipCode, Room[] rooms, Coordinates coordinates) {
+	public Hotel(int stars, String name, String type, String street, String streetNumber, String city, String zipCode, Coordinates coordinates) {
 		this.stars = stars;
 		this.name = name;
 		this.type = type;
@@ -19,7 +21,7 @@ public class Hotel {
 		this.streetNumber = streetNumber;
 		this.city = city;
 		this.zipCode = zipCode;
-		this.rooms = rooms;
+		//this.rooms = rooms;
 		this.coordinates = coordinates;
 	}
 	
@@ -35,9 +37,9 @@ public class Hotel {
 		return this.type;
 	}
 	
-	public Room[] getRooms() {
+	/*public Room[] getRooms() {
 		return this.rooms;
-	}
+	}*/
 	
 	public String getStreet() {
 		return this.street;

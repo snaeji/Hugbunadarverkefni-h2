@@ -14,11 +14,12 @@ public class Room {
 	private int beds;
 	private int bedrooms;
 	private int roomCount;
+	private int id;
 	private List<Date> reservedDates = new ArrayList<Date>();
 	private List<Integer> reservedCounter = new ArrayList<Integer>();
 	private Hotel hotel;
 
-	public Room(int price, int area, int beds, int bedrooms, int roomCount, List<Date> reservedDates, List<Integer> reservedCounter, Hotel hotel){
+	public Room(int price, int area, int beds, int bedrooms, int roomCount, List<Date> reservedDates, List<Integer> reservedCounter, Hotel hotel, int id){
 		this.price = price;
 		this.area = area;
 		this.beds = beds;
@@ -27,7 +28,12 @@ public class Room {
 		this.reservedDates = reservedDates;
 		this.reservedCounter = reservedCounter;
 		this.hotel = hotel;
+		this.id = id;
 	};
+	
+	int getId() {
+		return this.id;
+	}
 
 	public int getPrice (){
 		return this.price;
