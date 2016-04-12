@@ -212,9 +212,8 @@ public class Database {
 			return roomList;
 		}
 		
-		public static List<Room> executeQueryRooms2(int minPrice,int maxPrice,int minStars,int maxStars,String[] amenities, String street, String city, String zipCode){
+		public static List<Room> executeQueryRooms2(){
 			List <Room> rooms = new ArrayList<Room>();
-			List <Hotel> hotels = new ArrayList<Hotel>();
 			List <Integer> id = new ArrayList<Integer>();
 			List <Date> reserveDates = new ArrayList<Date>();
 			List <Integer> reserveCount = new ArrayList<Integer>();
@@ -246,11 +245,11 @@ public class Database {
 				return rooms;
 			}
 			
-			//Get Rooms & Hotels.... and put reserveDates & reserveCount & Hotels into Rooms
+			//Get Rooms & Hotels.... and put reserveDates & reserveCount & Hotels etc into Rooms
 			
 			connection = null;
-			PreparedStatement preparedStatement = null;
-			ResultSet rs = null;
+			preparedStatement = null;
+			rs = null;
 			try {
 				Class.forName("org.sqlite.JDBC");
 				connection = DriverManager.getConnection("jdbc:sqlite:hotels.db");
