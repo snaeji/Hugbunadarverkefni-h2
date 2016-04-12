@@ -1,5 +1,6 @@
 package is.hi.hbv401g.h2.hotel;
 
+import java.util.List;
 
 public class HotelManager {
 	private HotelDBController hotelDBController;
@@ -8,11 +9,11 @@ public class HotelManager {
 		this.hotelDBController = new HotelDBController();
 	};
 
-	public Room[] searchWithAddress(int minPrice,int maxPrice,int minStars,int maxStars, String street, String city, String zipCode){
-		return hotelDBController.searchWithAddress(minPrice,maxPrice,minStars,maxStars,street,city,zipCode);
+	public List<Room> searchWithAddress(int minPrice,int maxPrice,int minStars, String street, String city, String zipCode){
+		return hotelDBController.searchWithAddress(minPrice,maxPrice,minStars,street,city,zipCode);
 	};
 
-	public Room[] searchWithCoords(int minPrice,int maxPrice,int minStars,int maxStars, double radius, Coordinates coords){
-		return hotelDBController.searchWithCoords(minPrice,maxPrice,minStars,maxStars,radius,coords);
+	public List<Room> searchWithCoords(int minPrice,int maxPrice,int minStars, double radius, Coordinates coords){
+		return hotelDBController.searchWithCoords(minPrice,maxPrice,minStars,radius,coords);
 	};
 }
