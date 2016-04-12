@@ -2,16 +2,16 @@ package is.hi.hbv401g.h2.hotel;
 
 public class Coordinates{
 
-	private double longtitude;
 	private double latitude;
+	private double longtitude;
 
-	public Coordinates(double longtitude, double latitude){
-		this.longtitude = longtitude;
+	public Coordinates(double latitude, double longtitude){
 		this.latitude = latitude;
+		this.longtitude = longtitude;
 	};
 
 	public double[] getCoordinates(){
-		double [] coordinates = {longtitude, latitude};
+		double [] coordinates = {latitude, longtitude};
 		return coordinates;
 	};
 
