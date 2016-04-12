@@ -156,5 +156,4 @@ public class BookingDBController {
 		
 	private static final String DELETE_BOOKING_WITH_ID
 		= "DELETE * FROM Booking WHERE ID=?";
-	
 }

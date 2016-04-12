@@ -5,13 +5,11 @@ import java.util.List;
 
 public class BookingManager {
 	
-	private BookingDBController bookingDBController = new BookingDBController();
-	
 	// FINISHED
 	public Booking book(Traveler traveler, List<Room> rooms, Date fromDate, Date toDate) {
 		Integer id = null;
 		Booking booking = new Booking(traveler, rooms, fromDate, toDate, id);
-		bookingDBController.book(booking);
+		BookingDBController.book(booking);
 		return booking;
 	}
 	
@@ -29,7 +27,7 @@ public class BookingManager {
 	
 	// FINISHED
 	public void cancelBooking(Booking booking) {
-		bookingDBController.cancelBooking(booking);
+		BookingDBController.cancelBooking(booking);
 		booking.cancelReserve();
 	}
 	
