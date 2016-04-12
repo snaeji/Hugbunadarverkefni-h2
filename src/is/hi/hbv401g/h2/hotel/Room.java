@@ -135,6 +135,8 @@ public class Room {
 		
 		//Change reservedCounter and reservedRooms in Database... ?
 		// Change to void function? 
+		HotelDBController hotelDBController = new HotelDBController();
+		hotelDBController.changeReservations(this.id,this.reservedDates,this.reservedCounter);
 		
 		return true;
 	}
@@ -177,5 +179,7 @@ public class Room {
 		}
 		
 		//Change reservedCounter and reservedRooms in Database... ?
+		HotelDBController hotelDBController = new HotelDBController();
+		hotelDBController.changeReservations(this.id,this.reservedDates,this.reservedCounter);
 	}
 }

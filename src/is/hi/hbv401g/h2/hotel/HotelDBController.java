@@ -68,6 +68,37 @@ public class HotelDBController {
 		return filteredRooms;
 	};
 	
+	void changeReservations(int id,List <Date> reservedDates,List <Integer> reservedCounter){
+		Connection connection = null;
+		Statement statement = null;
+		try {
+			Class.forName("org.sqlite.JDBC");
+			connection = DriverManager.getConnection("jdbc:sqlite:hotels.db");
+			System.out.println("Opened database successfully");
+
+			statement = connection.createStatement();
+			String sql = "DELETE FROM Reservations WHERE id="+id+";"; 
+			statement.executeUpdate(sql);
+			
+			statement = connection.createStatement();
+			sql = "INSERT INTO Reservations (id,date,count) VALUES ";
+			if(reservedDates.size()>0)sql = sql + " ("+id+",'"+reservedDates.get(0).getTime()+"',"+reservedCounter.get(0)+")";
+			for(int i = 1;i<reservedDates.size();i++){
+				sql = sql + " ,("+id+",'"+reservedDates.get(i).getTime()+"',"+reservedCounter.get(i)+")";
+			}
+			sql = sql+";";
+			statement.executeUpdate(sql);
+			
+			statement.close();
+			connection.close();
+		} catch ( Exception e ) {
+			System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+			System.exit(0);
+		}
+		System.out.println("Table created successfully");
+		
+	}
+	
 	private List<Room> executeQueryRooms(){
 		List <Room> rooms = new ArrayList<Room>();
 		List <Integer> id = new ArrayList<Integer>();
@@ -265,9 +296,9 @@ public class HotelDBController {
 			
 			stmt = c.createStatement();
 			sql = "INSERT INTO Rooms (id,price,area,beds,bedrooms,roomCount,hotel) " +
-					"VALUES ('1', 3000,15, 1, 1,  5, 'hotel1'),  "+
-						   "('2', 5000,20, 2, 2,  5, 'hotel2'), " +
-						   "('3', 10000,30, 3', 3,  5, 'hotel3')"; 
+					"VALUES (1, 3000,15, 1, 1,  5, 'hotel1'),  "+
+						   "(2, 5000,20, 2, 2,  5, 'hotel2'), " +
+						   "(3, 10000,30, 3', 3,  5, 'hotel3')"; 
 			stmt.executeUpdate(sql);
 			
 			//stmt = c.createStatement();
