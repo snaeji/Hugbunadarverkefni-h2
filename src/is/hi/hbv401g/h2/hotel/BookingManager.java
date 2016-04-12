@@ -1,15 +1,16 @@
 package is.hi.hbv401g.h2.hotel;
 
 import java.util.Date;
+import java.util.List;
 
 public class BookingManager {
-	private BookingDBController bookingDBController = new BookingDBController();
-//	private Booking[] bookings;
 	
+	private BookingDBController bookingDBController = new BookingDBController();
 	
 	// FINISHED
-	public Booking book(Traveler traveler, Room[] rooms, Date fromDate, Date toDate) {
-		Booking booking = new Booking(traveler, rooms, fromDate, toDate);
+	public Booking book(Traveler traveler, List<Room> rooms, Date fromDate, Date toDate) {
+		Integer id = null;
+		Booking booking = new Booking(traveler, rooms, fromDate, toDate, id);
 		bookingDBController.book(booking);
 		return booking;
 	}
@@ -20,10 +21,11 @@ public class BookingManager {
 //	}
 	
 	// FINISHED
+	/*
 	public Booking[] getBookingsByTraveler(Traveler traveler) {
 		Booking[] bookings = bookingDBController.getBookingsByTraveler(traveler);
 		return bookings;
-	}
+	}*/
 	
 	// FINISHED
 	public void cancelBooking(Booking booking) {
