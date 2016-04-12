@@ -2,12 +2,11 @@
 TextView:			90%		Bug testing left (bæta kannski við booking support og double check að parameters séu rétt tög)
 TextInputController:		90%		Bug testing left (bæta kannski við booking support)
 BookingManager:			90%		fara yfir mögulegar villur eftir að búið er að commita Booking, þarf að yfirfara aðeins
-HotelManager:			100%		
+HotelManager:			100%		bugfixes?
 Booking:			90%		þarf að yfirfara aðeins
-Room:				90%		vantar að update-a DB fyrir reserve og cancelReserve
-Hotel:				90%		Annaðhvort hótel yfir rooms, eða rooms yfir hotel, ekki bæði.
+Room:				100%		bugfixes?
+Hotel:				100%		bugfixes?
 Traveler:			100%		útfært af GUI grúppunni
 Coordinates:			100%		
 BookingDBController:		?
-HotelDBController:		?
-Database:			50%
+HotelDBController:		100%		bugfixes?
