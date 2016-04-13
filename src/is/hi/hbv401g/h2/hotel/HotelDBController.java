@@ -74,7 +74,7 @@ public class HotelDBController {
 		try {
 			Class.forName("org.sqlite.JDBC");
 			connection = DriverManager.getConnection("jdbc:sqlite:hotels.db");
-			System.out.println("Opened database successfully");
+			System.out.println("changeReservations: ...");
 
 			statement = connection.createStatement();
 			String sql = "DELETE FROM Reservations WHERE id="+id+";"; 
@@ -95,7 +95,7 @@ public class HotelDBController {
 			System.err.println( e.getClass().getName() + ": " + e.getMessage() );
 			System.exit(0);
 		}
-		System.out.println("Table created successfully");
+		System.out.println("changeReservations: success");
 		
 	}
 	
@@ -114,7 +114,7 @@ public class HotelDBController {
 			Class.forName("org.sqlite.JDBC");
 			connection = DriverManager.getConnection("jdbc:sqlite:hotels.db");
 			connection.setAutoCommit(false);
-			System.out.println("Opened database successfully");
+			System.out.println("executeQueryRooms: begin");
 			
 			preparedStatement = connection.prepareStatement("SELECT * FROM Reservations");
 			rs = preparedStatement.executeQuery(); //Queery
@@ -141,7 +141,7 @@ public class HotelDBController {
 			Class.forName("org.sqlite.JDBC");
 			connection = DriverManager.getConnection("jdbc:sqlite:hotels.db");
 			connection.setAutoCommit(false);
-			System.out.println("Opened database successfully");
+			System.out.println("executeQueryRooms: next");
 			
 			preparedStatement = connection.prepareStatement("SELECT * from Rooms,Hotels WHERE Hotels.name = Rooms.hotel");
 			rs = preparedStatement.executeQuery();
@@ -172,7 +172,7 @@ public class HotelDBController {
 			System.exit(0);
 			return rooms;
 		}
-		
+		System.out.println("executeQueryRooms: success");
 		return rooms;
 	}
 	
