@@ -75,9 +75,9 @@ public class BookingDBController {
 		try {
 			con = establishConnection(DRIVER, DB, false);
 			pstmt = con.prepareStatement(UPDATE_BOOKING_DATES);
-			pstmt.setDate(0, new java.sql.Date(booking.getFromDate().getTime()));
-			pstmt.setDate(1, new java.sql.Date(booking.getToDate().getTime()));
-			pstmt.setInt(2, booking.getId());
+			pstmt.setString(1, DF.format(booking.getFromDate()));
+			pstmt.setString(2, DF.format(booking.getToDate()));
+			pstmt.setInt(3, booking.getId());
 			pstmt.executeUpdate();
 			con.commit();
 			pstmt.close();
@@ -102,6 +102,11 @@ public class BookingDBController {
 				pstmt.setInt(2, room.getId());
 				pstmt.setString(3, DF.format(booking.getFromDate()));
 				pstmt.setString(4, DF.format(booking.getToDate()));
+				System.out.println("");
+				System.out.println("");
+				System.out.println(   DF.parse(DF.format(booking.getFromDate())).toString()    );
+				System.out.println("");
+				System.out.println("");
 				pstmt.addBatch();
 			}
 			pstmt.executeBatch();
@@ -136,7 +141,7 @@ public class BookingDBController {
 		} catch ( Exception e ) {
 			System.err.println( e.getClass().getName() + ": " + e.getMessage() );
 			System.exit(0);
-		}   System.out.println("Table Booking created successfully");
+		}   System.out.println("createTableBooking: ...");
 	}
 	
 	private static final String CREATE_BOOKING_TABLE 
