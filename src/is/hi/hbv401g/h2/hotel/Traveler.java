@@ -5,8 +5,9 @@ public class Traveler {
 	private String name;
 	private int Id;
 	
-	public Traveler(String name){
+	public Traveler(String name, int id){
 		this.name = name;
+		this.Id = id;
 	};
 	
 	 public String getName(){

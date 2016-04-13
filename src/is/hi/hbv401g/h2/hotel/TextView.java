@@ -60,7 +60,9 @@ public class TextView {
 	void printSearchResults(List<Room> searchResults) {
 		System.out.println();
 		System.out.println("Search results:");
+		int counter = 0;
 		for(Room room : searchResults) {
+			System.out.println("Result: "+counter++);
 			System.out.print("Price: ");
 			System.out.println(room.getPrice());
 			System.out.print("Area: ");
@@ -76,6 +78,14 @@ public class TextView {
 		System.out.println();
 	}
 	
+	int askForIndexToBook(){
+		String result = console.readLine("Which result would you like to book? ");
+		return Integer.parseInt(result);
+	}
+	
+	void farewell(){
+		System.out.print("Congratulations, you have now booked a room.");
+	}
 	
 	
 }
