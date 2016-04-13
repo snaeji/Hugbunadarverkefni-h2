@@ -17,17 +17,6 @@ public class TextInputController {
 	// searchWIthAddres: minPrice, maxPrice, minStars, maxStars, street, city, zipCode
 	// searchWithCoords: minPrice, minStars, maxStars, radius coordinates
 	public static void main(String[] args) {
-		textView = new TextView();
-		bookingManager = new BookingManager();
-		hotelManager = new HotelManager();
-		
-		textView.greet();
-		int indexToBook = searchForRooms();
-		
-		
-		List<Room> roomToBook = new ArrayList<Room>();
-		roomToBook.add(lastResult.get(indexToBook));
-		
 		Calendar calFrom = Calendar.getInstance();
 		calFrom.setTimeInMillis(0);
 		calFrom.set(2016, 4, 9, 16, 0, 0);
@@ -45,12 +34,24 @@ public class TextInputController {
 		//System.out.println(calTo.getTime());
 		System.out.println(dateTo.toString());
 		
+		textView = new TextView();
+		bookingManager = new BookingManager();
+		hotelManager = new HotelManager();
+		
+		textView.greet();
+		int indexToBook = searchForRooms(dateFrom,dateTo);
+		
+		
+		List<Room> roomToBook = new ArrayList<Room>();
+		roomToBook.add(lastResult.get(indexToBook));
+		
+		
 		
 		bookingManager.book(new Traveler("arnar",0), roomToBook, dateFrom, dateTo);
 		
 		textView.farewell();
 	}
-	public static int searchForRooms(){
+	public static int searchForRooms(Date dateFrom,Date dateTo){
 		List<Room> searchResults;
 		String searchMethod = textView.askForSearchMethod();
 		if(searchMethod.equalsIgnoreCase("1")) {
@@ -61,7 +62,10 @@ public class TextInputController {
 					Integer.parseInt(searchParameters[2]), 
 					searchParameters[4], 
 					searchParameters[5], 
-					searchParameters[6]
+					searchParameters[6],
+					1,
+					dateFrom,
+					dateTo
 			);
 		} else {
 			String[] searchParameters = textView.askForSearchParametersCoords();
@@ -70,12 +74,16 @@ public class TextInputController {
 					Integer.parseInt(searchParameters[1]), 
 					Integer.parseInt(searchParameters[2]), 
 					Double.parseDouble(searchParameters[4]), 
-					new Coordinates(Double.parseDouble(searchParameters[5]), Double.parseDouble(searchParameters[6]))
+					new Coordinates(Double.parseDouble(searchParameters[5]), Double.parseDouble(searchParameters[6])),
+							1,
+							dateFrom,
+							dateTo
+							
 			);
 		}
 		lastResult = searchResults;
 		textView.printSearchResults(searchResults);
-		if(searchResults.size()==0) return searchForRooms();
+		if(searchResults.size()==0) return searchForRooms(dateFrom,dateTo);
 		else return textView.askForIndexToBook();
 		
 	}

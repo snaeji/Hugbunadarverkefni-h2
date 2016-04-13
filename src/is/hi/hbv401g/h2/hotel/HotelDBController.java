@@ -1,5 +1,6 @@
 package is.hi.hbv401g.h2.hotel;
 import java.sql.*;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -14,13 +15,14 @@ public class HotelDBController {
 		insertIntoDBStuff();
 	}
 
-	public List<Room> searchWithAddress(int minPrice,int maxPrice,int minStars, String street, String city, String zipCode){
+	public List<Room> searchWithAddress(int minPrice,int maxPrice,int minStars, String street, String city, String zipCode,int count, Date fromDate, Date toDate){
 		List<Room> rooms = executeQueryRooms();
 		List <Room> filteredRooms = new ArrayList<Room>();
 		for(int i = 0;i<rooms.size();i++){
 			if(		  rooms.get(i).getPrice()<=maxPrice
 					&&rooms.get(i).getPrice()>=minPrice
 					&&rooms.get(i).getHotel().getStars()>=minStars
+					&&rooms.get(i).isAvailable(fromDate, toDate, count)
 					)
 			{
 				filteredRooms.add(rooms.get(i));
@@ -50,7 +52,7 @@ public class HotelDBController {
 		return rooms;
 	};
 
-	public List<Room> searchWithCoords(int minPrice,int maxPrice,int minStars, double radius, Coordinates coords){
+	public List<Room> searchWithCoords(int minPrice,int maxPrice,int minStars, double radius, Coordinates coords,int count, Date fromDate, Date toDate){
 		List<Room> rooms = executeQueryRooms();
 		List <Room> filteredRooms = new ArrayList<Room>();
 		for(int i = 0;i<rooms.size();i++){
@@ -58,6 +60,7 @@ public class HotelDBController {
 					&&rooms.get(i).getPrice()>=minPrice
 					&&rooms.get(i).getHotel().getStars()>=minStars
 					&&rooms.get(i).getHotel().getCoordinates().distanceTo(coords)<=radius
+					&&rooms.get(i).isAvailable(fromDate, toDate, count)
 			  )
 			{
 				filteredRooms.add(rooms.get(i));
