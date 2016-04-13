@@ -73,7 +73,7 @@ public class TextView {
 			System.out.print("Number of bedrooms: ");
 			System.out.println(room.getBedrooms());
 			System.out.print("Hotel name: ");
-			System.out.println(room.getHotel());
+			System.out.println(room.getHotel().getName());
 			System.out.println();
 		}
 		System.out.println();

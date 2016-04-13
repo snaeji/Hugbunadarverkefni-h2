@@ -28,27 +28,32 @@ public class HotelDBController {
 				filteredRooms.add(rooms.get(i));
 			};
 		}
+		
 		rooms = filteredRooms;
-		filteredRooms = new ArrayList<Room>();
+		filteredRooms = new ArrayList<Room>(); // HEEEERE IS THE PROBLEM
+		
 		if(street!=null){
 			for(int i = 0;i<rooms.size();i++){
 				if(rooms.get(i).getHotel().getStreet().compareTo(street)==0)filteredRooms.add(rooms.get(i));
 			}
 			rooms = filteredRooms;
+			//filteredRooms = new ArrayList<Room>();
 		}
-		filteredRooms = new ArrayList<Room>();
+	
 		if(city!=null){
 			for(int i = 0;i<rooms.size();i++){
 				if(rooms.get(i).getHotel().getCity().compareTo(city)==0)filteredRooms.add(rooms.get(i));
 			}
 			rooms = filteredRooms;
+			//filteredRooms = new ArrayList<Room>();
 		}
-		filteredRooms = new ArrayList<Room>();
+		
 		if(zipCode!=null){
 			for(int i = 0;i<rooms.size();i++){
 				if(rooms.get(i).getHotel().getZipCode().compareTo(zipCode)==0)filteredRooms.add(rooms.get(i));
 			}
 			rooms = filteredRooms;
+			//filteredRooms = new ArrayList<Room>();
 		}
 		
 		
@@ -72,7 +77,7 @@ public class HotelDBController {
 		rooms = filteredRooms;
 		filteredRooms = new ArrayList<Room>();
 		
-		return filteredRooms;
+		return rooms;
 	};
 	
 	void changeReservations(int id,List <Date> reservedDates,List <Integer> reservedCounter){
