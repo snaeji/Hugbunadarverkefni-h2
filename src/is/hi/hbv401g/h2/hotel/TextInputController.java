@@ -18,8 +18,8 @@ public class TextInputController {
 	// searchWithCoords: minPrice, minStars, maxStars, radius coordinates
 	public static void main(String[] args) {
 		textView = new TextView();
-		hotelManager = new HotelManager();
 		bookingManager = new BookingManager();
+		hotelManager = new HotelManager();
 		
 		textView.greet();
 		int indexToBook = searchForRooms();

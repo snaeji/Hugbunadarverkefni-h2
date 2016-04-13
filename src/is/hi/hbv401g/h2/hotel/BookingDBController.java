@@ -128,6 +128,7 @@ public class BookingDBController {
 			stmt = c.createStatement();
 			stmt.executeUpdate(CREATE_BOOKING_TABLE);
 			stmt.close();
+			c.commit();
 			c.close();
 		} catch ( Exception e ) {
 			System.err.println( e.getClass().getName() + ": " + e.getMessage() );
