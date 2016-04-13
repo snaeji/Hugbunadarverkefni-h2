@@ -32,11 +32,15 @@ public class TextInputController {
 		calFrom.setTimeInMillis(0);
 		calFrom.set(2016, 4, 9, 16, 0, 0);
 		Date dateFrom = calFrom.getTime();
+		System.out.print("dateFrom: ");
+		System.out.println(calFrom.getTime());
 		
 		Calendar calTo = Calendar.getInstance();
 		calTo.setTimeInMillis(0);
 		calTo.set(2016, 4, 12, 16, 0, 0);
 		Date dateTo = calFrom.getTime();
+		System.out.print("dateTo: ");
+		System.out.println(calTo.getTime());
 		
 		
 		bookingManager.book(new Traveler("arnar",0), roomToBook, dateFrom, dateTo);
