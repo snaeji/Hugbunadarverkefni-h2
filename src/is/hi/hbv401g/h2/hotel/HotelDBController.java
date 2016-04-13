@@ -29,18 +29,21 @@ public class HotelDBController {
 			};
 		}
 		rooms = filteredRooms;
+		filteredRooms = new ArrayList<Room>();
 		if(street!=null){
 			for(int i = 0;i<rooms.size();i++){
 				if(rooms.get(i).getHotel().getStreet().compareTo(street)==0)filteredRooms.add(rooms.get(i));
 			}
 			rooms = filteredRooms;
 		}
+		filteredRooms = new ArrayList<Room>();
 		if(city!=null){
 			for(int i = 0;i<rooms.size();i++){
 				if(rooms.get(i).getHotel().getCity().compareTo(city)==0)filteredRooms.add(rooms.get(i));
 			}
 			rooms = filteredRooms;
 		}
+		filteredRooms = new ArrayList<Room>();
 		if(zipCode!=null){
 			for(int i = 0;i<rooms.size();i++){
 				if(rooms.get(i).getHotel().getZipCode().compareTo(zipCode)==0)filteredRooms.add(rooms.get(i));
@@ -67,6 +70,7 @@ public class HotelDBController {
 			};
 		}
 		rooms = filteredRooms;
+		filteredRooms = new ArrayList<Room>();
 		
 		return filteredRooms;
 	};
