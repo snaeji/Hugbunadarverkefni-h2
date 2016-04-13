@@ -102,11 +102,6 @@ public class BookingDBController {
 				pstmt.setInt(2, room.getId());
 				pstmt.setString(3, DF.format(booking.getFromDate()));
 				pstmt.setString(4, DF.format(booking.getToDate()));
-				System.out.println("");
-				System.out.println("");
-				System.out.println(   DF.parse(DF.format(booking.getFromDate())).toString()    );
-				System.out.println("");
-				System.out.println("");
 				pstmt.addBatch();
 			}
 			pstmt.executeBatch();
