@@ -118,7 +118,7 @@ public class Room {
 				// Check if dateFrom is in reservedDates
 				Calendar calSys = Calendar.getInstance();
 				calSys.setTimeInMillis(0);
-				calSys.set(systemDate.getYear(), systemDate.getMonth(), systemDate.getDate(), 16, 0, 0);
+				calSys.set(systemDate.getYear()+1900, systemDate.getMonth(), systemDate.getDate(), 16, 0, 0);
 				systemDate = calSys.getTime();
 				
 			    if(dateFrom.compareTo(systemDate)==0){

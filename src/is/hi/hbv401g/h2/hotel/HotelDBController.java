@@ -93,6 +93,8 @@ public class HotelDBController {
 			sql = sql+";";
 			statement.executeUpdate(sql);
 			
+			
+			
 			statement.close();
 			connection.close();
 		} catch ( Exception e ) {
