@@ -48,7 +48,6 @@ public class HotelDBController {
 
 	public List<Room> searchWithCoords(int minPrice,int maxPrice,int minStars, double radius, Coordinates coords,int count, Date fromDate, Date toDate){
 		List<Room> rooms = executeQueryRooms();
-		List <Room> filteredRooms = new ArrayList<Room>();
 		for(int i = rooms.size()-1;i>=0;i--){
 			if(		  !(rooms.get(i).getPrice()<=maxPrice
 					&&rooms.get(i).getPrice()>=minPrice

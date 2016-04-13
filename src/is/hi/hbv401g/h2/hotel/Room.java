@@ -155,12 +155,12 @@ public class Room {
 		
 		Calendar calFrom = Calendar.getInstance();
 		calFrom.setTimeInMillis(0);
-		calFrom.set(dateFrom.getYear(), dateFrom.getMonth(), dateFrom.getDate(), 16, 0, 0);
+		calFrom.set(dateFrom.getYear()+1900, dateFrom.getMonth(), dateFrom.getDate(), 16, 0, 0);
 		dateFrom = calFrom.getTime(); 
 		
 		Calendar calTo = Calendar.getInstance();
 		calTo.setTimeInMillis(0);
-		calTo.set(dateTo.getYear(), dateTo.getMonth(), dateTo.getDate(), 16, 0, 0);
+		calTo.set(dateTo.getYear()+1900, dateTo.getMonth(), dateTo.getDate(), 16, 0, 0);
 		dateTo = calTo.getTime(); 
 		
 		long oneDay = TimeUnit.DAYS.toMillis(1);
@@ -171,7 +171,7 @@ public class Room {
 				// Check if dateFrom is in reservedDates
 				Calendar calSys = Calendar.getInstance();
 				calSys.setTimeInMillis(0);
-				calSys.set(systemDate.getYear(), systemDate.getMonth(), systemDate.getDate(), 16, 0, 0);
+				calSys.set(systemDate.getYear()+1900, systemDate.getMonth(), systemDate.getDate(), 16, 0, 0);
 				systemDate = calSys.getTime();
 				
 			    if(dateFrom.compareTo(systemDate)==0){
