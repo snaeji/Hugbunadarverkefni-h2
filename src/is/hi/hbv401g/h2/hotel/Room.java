@@ -96,13 +96,18 @@ public class Room {
 		
 		Calendar calFrom = Calendar.getInstance();
 		calFrom.setTimeInMillis(0);
-		calFrom.set(dateFrom.getYear(), dateFrom.getMonth(), dateFrom.getDate(), 16, 0, 0);
+		calFrom.set(dateFrom.getYear()+1900, dateFrom.getMonth(), dateFrom.getDate(), 16, 0, 0);
 		dateFrom = calFrom.getTime();
+		System.out.print("dateFrom: ");
+		System.out.println(dateFrom.toString());
+		
 		
 		Calendar calTo = Calendar.getInstance();
 		calTo.setTimeInMillis(0);
-		calTo.set(dateTo.getYear(), dateTo.getMonth(), dateTo.getDate(), 16, 0, 0);
+		calTo.set(dateTo.getYear()+1900, dateTo.getMonth(), dateTo.getDate(), 16, 0, 0);
 		dateTo = calTo.getTime();
+		System.out.print("dateTo: ");
+		System.out.println(dateTo.toString());
 		
 		long oneDay = TimeUnit.DAYS.toMillis(1);
 		

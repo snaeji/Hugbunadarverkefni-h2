@@ -69,6 +69,7 @@ public class HotelDBController {
 	};
 	
 	void changeReservations(int id,List <Date> reservedDates,List <Integer> reservedCounter){
+		System.out.println("Updating room reservations");
 		Connection connection = null;
 		Statement statement = null;
 		try {
@@ -80,9 +81,12 @@ public class HotelDBController {
 			String sql = "DELETE FROM Reservations WHERE id="+id+";"; 
 			statement.executeUpdate(sql);
 			
+			
+			
 			statement = connection.createStatement();
 			sql = "INSERT INTO Reservations (id,date,count) VALUES ";
 			if(reservedDates.size()>0)sql = sql + " ("+id+",'"+reservedDates.get(0).getTime()+"',"+reservedCounter.get(0)+")";
+			System.out.println("inside test"+reservedDates.get(0).toString());
 			for(int i = 1;i<reservedDates.size();i++){
 				sql = sql + " ,("+id+",'"+reservedDates.get(i).getTime()+"',"+reservedCounter.get(i)+")";
 			}
@@ -99,6 +103,7 @@ public class HotelDBController {
 		
 	}
 	
+	@SuppressWarnings("deprecation")
 	private List<Room> executeQueryRooms(){
 		List <Room> rooms = new ArrayList<Room>();
 		List <Integer> id = new ArrayList<Integer>();
@@ -120,7 +125,7 @@ public class HotelDBController {
 			rs = preparedStatement.executeQuery(); //Queery
 			while(rs.next()){
 				id.add(rs.getInt("id"));
-				reserveDates.add(new Date(rs.getInt("date")));
+				reserveDates.add(new Date(rs.getLong("date")));
 				reserveCount.add(rs.getInt("count"));
 				
 			}
@@ -298,9 +303,9 @@ public class HotelDBController {
 			
 			stmt = c.createStatement();
 			sql = "INSERT INTO Rooms (id,price,area,beds,bedrooms,roomCount,hotel,stars) " +
-					"VALUES (1, 3000,15, 1, 1,  5, 'hotel1',3),  "+
-						   "(2, 5000,20, 2, 2,  5, 'hotel2',4), " +
-						   "(3, 10000,30, '3', 3,  5, 'hotel3',5)"; 
+					"VALUES (1, 1,15, 1, 1,  5, 'hotel1',3),  "+
+						   "(2, 2,20, 2, 2,  5, 'hotel2',4), " +
+						   "(3, 3,30, '3', 3,  5, 'hotel3',5)"; 
 			stmt.executeUpdate(sql);
 			
 			//stmt = c.createStatement();
