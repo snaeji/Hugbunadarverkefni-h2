@@ -295,10 +295,10 @@ public class HotelDBController {
 			stmt.executeUpdate(sql);
 			
 			stmt = c.createStatement();
-			sql = "INSERT INTO Rooms (id,price,area,beds,bedrooms,roomCount,hotel) " +
-					"VALUES (1, 3000,15, 1, 1,  5, 'hotel1'),  "+
-						   "(2, 5000,20, 2, 2,  5, 'hotel2'), " +
-						   "(3, 10000,30, 3', 3,  5, 'hotel3')"; 
+			sql = "INSERT INTO Rooms (id,price,area,beds,bedrooms,roomCount,hotel,stars) " +
+					"VALUES (1, 3000,15, 1, 1,  5, 'hotel1',3),  "+
+						   "(2, 5000,20, 2, 2,  5, 'hotel2',4), " +
+						   "(3, 10000,30, '3', 3,  5, 'hotel3',5)"; 
 			stmt.executeUpdate(sql);
 			
 			//stmt = c.createStatement();
