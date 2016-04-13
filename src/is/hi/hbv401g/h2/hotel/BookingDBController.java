@@ -95,10 +95,10 @@ public class BookingDBController {
 			con = establishConnection(DRIVER, DB, false);
 			pstmt = con.prepareStatement(INSERT_BOOKING);
 			for(Room room : booking.getRooms()) {
-				pstmt.setInt(0, booking.getTraveler().getId());
-				pstmt.setInt(1, room.getId());
-				pstmt.setDate(2, new java.sql.Date(booking.getFromDate().getTime()));
-				pstmt.setDate(3, new java.sql.Date(booking.getToDate().getTime()));
+				pstmt.setInt(1, booking.getTraveler().getId());
+				pstmt.setInt(2, room.getId());
+				pstmt.setDate(3, new java.sql.Date(booking.getFromDate().getTime()));
+				pstmt.setDate(4, new java.sql.Date(booking.getToDate().getTime()));
 				pstmt.addBatch();
 			}
 			pstmt.executeBatch();
