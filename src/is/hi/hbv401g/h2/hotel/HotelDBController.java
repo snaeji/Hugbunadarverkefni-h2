@@ -17,65 +17,50 @@ public class HotelDBController {
 
 	public List<Room> searchWithAddress(int minPrice,int maxPrice,int minStars, String street, String city, String zipCode,int count, Date fromDate, Date toDate){
 		List<Room> rooms = executeQueryRooms();
-		List <Room> filteredRooms = new ArrayList<Room>();
-		for(int i = 0;i<rooms.size();i++){
-			if(		  rooms.get(i).getPrice()<=maxPrice
+		for(int i = rooms.size()-1;i>=0;i--){
+			if(		  !(rooms.get(i).getPrice()<=maxPrice
 					&&rooms.get(i).getPrice()>=minPrice
 					&&rooms.get(i).getHotel().getStars()>=minStars
 					&&rooms.get(i).isAvailable(fromDate, toDate, count)
 					)
+			)
 			{
-				filteredRooms.add(rooms.get(i));
+				rooms.remove(i);
 			};
 		}
-		
-		rooms = filteredRooms;
-		filteredRooms = new ArrayList<Room>(); // HEEEERE IS THE PROBLEM
-		
 		if(street!=null){
-			for(int i = 0;i<rooms.size();i++){
-				if(rooms.get(i).getHotel().getStreet().compareTo(street)==0)filteredRooms.add(rooms.get(i));
+			for(int i = rooms.size()-1;i>=0;i--){
+				if(rooms.get(i).getHotel().getStreet().compareTo(street)!=0&&street.compareTo("")!=0)rooms.remove(i);
 			}
-			rooms = filteredRooms;
-			//filteredRooms = new ArrayList<Room>();
 		}
-	
 		if(city!=null){
-			for(int i = 0;i<rooms.size();i++){
-				if(rooms.get(i).getHotel().getCity().compareTo(city)==0)filteredRooms.add(rooms.get(i));
+			for(int i = rooms.size()-1;i>=0;i--){
+				if(rooms.get(i).getHotel().getCity().compareTo(city)!=0&&street.compareTo("")!=0)rooms.remove(i);
 			}
-			rooms = filteredRooms;
-			//filteredRooms = new ArrayList<Room>();
 		}
-		
 		if(zipCode!=null){
-			for(int i = 0;i<rooms.size();i++){
-				if(rooms.get(i).getHotel().getZipCode().compareTo(zipCode)==0)filteredRooms.add(rooms.get(i));
+			for(int i = rooms.size()-1;i>=0;i--){
+				if(rooms.get(i).getHotel().getZipCode().compareTo(zipCode)!=0&&street.compareTo("")!=0)rooms.remove(i);
 			}
-			rooms = filteredRooms;
-			//filteredRooms = new ArrayList<Room>();
 		}
-		
-		
 		return rooms;
 	};
 
 	public List<Room> searchWithCoords(int minPrice,int maxPrice,int minStars, double radius, Coordinates coords,int count, Date fromDate, Date toDate){
 		List<Room> rooms = executeQueryRooms();
 		List <Room> filteredRooms = new ArrayList<Room>();
-		for(int i = 0;i<rooms.size();i++){
-			if(		  rooms.get(i).getPrice()<=maxPrice
+		for(int i = rooms.size()-1;i>=0;i--){
+			if(		  !(rooms.get(i).getPrice()<=maxPrice
 					&&rooms.get(i).getPrice()>=minPrice
 					&&rooms.get(i).getHotel().getStars()>=minStars
 					&&rooms.get(i).getHotel().getCoordinates().distanceTo(coords)<=radius
 					&&rooms.get(i).isAvailable(fromDate, toDate, count)
+					)
 			  )
 			{
-				filteredRooms.add(rooms.get(i));
+				rooms.remove(i);
 			};
 		}
-		rooms = filteredRooms;
-		filteredRooms = new ArrayList<Room>();
 		
 		return rooms;
 	};
