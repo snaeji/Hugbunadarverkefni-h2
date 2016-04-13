@@ -224,8 +224,6 @@ public class HotelDBController {
 	// Here we make the Rooms table
 	private void createTableRooms()
 	{
-		List<Room> rooms = executeQueryRooms();
-		if(rooms.size()>0)return;
 		Connection c = null;
 		Statement stmt = null;
 		try {
@@ -281,6 +279,8 @@ public class HotelDBController {
 	// Here we insert some junk test data
 	private void insertIntoDBStuff()
 	{
+		List<Room> rooms = executeQueryRooms();
+		if(rooms.size()>0)return;
 		Connection c = null;
 		Statement stmt = null;
 		try {
