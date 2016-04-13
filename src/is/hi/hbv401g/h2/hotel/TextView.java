@@ -16,10 +16,11 @@ public class TextView {
 	}
 	
 	String askForSearchMethod() {
-		System.out.println("Please insert your search method, either searchWithAddress or searchWithCoords");
+		//System.out.println("Please insert your search method, either searchWithAddress or searchWithCoords");
+		System.out.println("Enter '1' for searchWithAddress or '2' for searchWithCoords");
 		String searchMethod = console.readLine("Search method: ");
 		
-		if((searchMethod.compareToIgnoreCase("searchWithAddress") == 0) || (searchMethod.compareToIgnoreCase("searchWithCoords") == 0)) {
+		if((searchMethod.compareToIgnoreCase("1") == 0) || (searchMethod.compareToIgnoreCase("2") == 0)) {
 			return searchMethod;
 		}
 		System.out.println("Invalid search method, try again.");

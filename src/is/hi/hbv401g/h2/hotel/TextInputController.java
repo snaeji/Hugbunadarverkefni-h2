@@ -39,14 +39,14 @@ public class TextInputController {
 		Date dateTo = calFrom.getTime();
 		
 		
-		bookingManager.book(new Traveler("arnar",1), roomToBook, dateFrom, dateTo);
+		bookingManager.book(new Traveler("arnar",0), roomToBook, dateFrom, dateTo);
 		
 		textView.farewell();
 	}
 	public static int searchForRooms(){
 		List<Room> searchResults;
 		String searchMethod = textView.askForSearchMethod();
-		if(searchMethod.equalsIgnoreCase("searchWithAddress")) {
+		if(searchMethod.equalsIgnoreCase("1")) {
 			String[] searchParameters = textView.askForSearchParametersAddress();
 			searchResults = hotelManager.searchWithAddress(
 					Integer.parseInt(searchParameters[0]), 
