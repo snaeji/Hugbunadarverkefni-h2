@@ -186,7 +186,7 @@ public class HotelDBController {
 			System.err.println( e.getClass().getName() + ": " + e.getMessage() );
 			System.exit(0);
 		}
-		System.out.println("Opened database successfully");
+		System.out.println("createDB: success");
 		return;
 	}
 	 
@@ -198,7 +198,7 @@ public class HotelDBController {
 		try {
 			Class.forName("org.sqlite.JDBC");
 			c = DriverManager.getConnection("jdbc:sqlite:hotels.db");
-			System.out.println("Opened database successfully");
+			System.out.println("createTableHotels: ...");
 
 			stmt = c.createStatement();
 //Hotel(int stars, String name, String type, String street, String streetNumber, String city, String zipCode, Coordinates coordinates)
@@ -219,7 +219,7 @@ public class HotelDBController {
 			System.err.println( e.getClass().getName() + ": " + e.getMessage() );
 			System.exit(0);
 		}
-		System.out.println("Table created successfully");
+		System.out.println("createTableHotels: success");
 	}
 	// Here we make the Rooms table
 	private void createTableRooms()
@@ -231,7 +231,7 @@ public class HotelDBController {
 		try {
 			Class.forName("org.sqlite.JDBC");
 			c = DriverManager.getConnection("jdbc:sqlite:hotels.db");
-			System.out.println("Opened database successfully");
+			System.out.println("createTableRooms: ...");
 
 			stmt = c.createStatement();
 //Room(int price, int area, int beds, int bedrooms, int roomCount, List<Date> reservedDates, List<Integer> reservedCounter, Hotel hotel, int id)
@@ -252,7 +252,7 @@ public class HotelDBController {
 			System.err.println( e.getClass().getName() + ": " + e.getMessage() );
 			System.exit(0);
 		}
-		System.out.println("Table created successfully");
+		System.out.println("createTableRooms: success");
 	}
 	private void createTableReservations()
 	{
@@ -261,7 +261,7 @@ public class HotelDBController {
 		try {
 			Class.forName("org.sqlite.JDBC");
 			c = DriverManager.getConnection("jdbc:sqlite:hotels.db");
-			System.out.println("Opened database successfully");
+			System.out.println("createTableReservations: ...");
 
 			stmt = c.createStatement();
 			String sql = "CREATE TABLE IF NOT EXISTS Reservations" +
@@ -276,7 +276,7 @@ public class HotelDBController {
 			System.err.println( e.getClass().getName() + ": " + e.getMessage() );
 			System.exit(0);
 		}
-		System.out.println("Table Reserved created successfully");
+		System.out.println("createTableReservations: success");
 	}
 	// Here we insert some junk test data
 	private void insertIntoDBStuff()
@@ -287,7 +287,7 @@ public class HotelDBController {
 			Class.forName("org.sqlite.JDBC");
 			c = DriverManager.getConnection("jdbc:sqlite:hotels.db");
 			c.setAutoCommit(false);
-			System.out.println("Opened database successfully");
+			System.out.println("insertIntoDBStuff: ...");
 
 			stmt = c.createStatement();
 			String sql = "INSERT INTO Hotels (name,stars,type,street,streetnumber,city,zipCode,latitude,longtitude) " +
@@ -317,7 +317,7 @@ public class HotelDBController {
 			System.err.println( e.getClass().getName() + ": " + e.getMessage() );
 			System.exit(0);
 		}
-		System.out.println("Records created successfully");
+		System.out.println("insertIntoDBStuff: success");
 	}
 	
 	//update Room for cancelreserve & reserve
