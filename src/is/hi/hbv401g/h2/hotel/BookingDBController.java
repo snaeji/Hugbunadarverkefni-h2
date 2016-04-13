@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -14,6 +16,7 @@ public class BookingDBController {
 	
 	private static final String DRIVER = "org.sqlite.JDBC";
 	private static final String DB = "jdbc:sqlite:hotels.db";
+	private static final DateFormat DF = new SimpleDateFormat("dd-MM-yyyy"); 
 	
 	/*
 	Booking[] getBookings() {
@@ -97,8 +100,8 @@ public class BookingDBController {
 			for(Room room : booking.getRooms()) {
 				pstmt.setInt(1, booking.getTraveler().getId());
 				pstmt.setInt(2, room.getId());
-				pstmt.setDate(3, new java.sql.Date(booking.getFromDate().getTime()));
-				pstmt.setDate(4, new java.sql.Date(booking.getToDate().getTime()));
+				pstmt.setString(3, DF.format(booking.getFromDate()));
+				pstmt.setString(4, DF.format(booking.getToDate()));
 				pstmt.addBatch();
 			}
 			pstmt.executeBatch();
@@ -138,11 +141,11 @@ public class BookingDBController {
 	
 	private static final String CREATE_BOOKING_TABLE 
 		= "CREATE TABLE IF NOT EXISTS Booking ("
-		+ "ID          INT     PRIMARY KEY,"
+		+ "ID          INTEGER    PRIMARY KEY,"
 		+ "travelerID  INT     NOT NULL,"
 		+ "roomID      INT     NOT NULL,"
-		+ "fromDate    DATE    NOT NULL,"
-		+ "toDate      DATE    NOT NULL)";
+		+ "fromDate    TEXT    NOT NULL,"
+		+ "toDate      TEXT    NOT NULL)";
 	
 	private static final String SELECT_BOOKING_WITH_TRAVELER 
 		= "SELECT * FROM Booking WHERE travelerID = *";

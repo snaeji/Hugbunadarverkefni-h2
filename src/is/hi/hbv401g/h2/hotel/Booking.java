@@ -23,6 +23,10 @@ public class Booking {
 		//if(!room.reserve(this)) { // ÞARF AÐ GERA LYKKJU HÉR ÞAR SEM ÞETTA ER FYLKI AF ROOM (IMPORTANT!?)
 		//	return null;
 		//}
+		System.out.print("Booking: fromDate = ");
+		System.out.println(fromDate.getTime());
+		System.out.print("Booking: toDate = ");
+		System.out.println(toDate.getTime());
 		for(Room roomy : rooms) roomy.reserve(this);
 	}
 
