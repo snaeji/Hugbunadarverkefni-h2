@@ -48,6 +48,7 @@ public class BookingDBController {
 	}
 	
 	static void cancelBooking(Booking booking) {
+		System.out.println("cancelBooking: ...");
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
@@ -61,10 +62,11 @@ public class BookingDBController {
 		} catch (Exception e) {
 			System.err.println( e.getClass().getName() + ": " + e.getMessage() );
 			System.exit(0);
-		}   System.out.println("Canceled booking");
+		}   System.out.println("cancelBooking: success");
 	}
 	
 	static Booking editBooking(Booking booking, Date toDate, Date fromDate) {
+		System.out.println("editBooking: ...");
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
@@ -80,12 +82,13 @@ public class BookingDBController {
 		} catch (Exception e) {
 			System.err.println( e.getClass().getName() + ": " + e.getMessage() );
 			System.exit(0);
-		}   System.out.println("Updated booking");
+		}   System.out.println("editBooking: success");
 		return booking;
 		// 
 	}
 	
 	static void book(Booking booking) {
+		System.out.println("book: ...");
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
@@ -112,12 +115,12 @@ public class BookingDBController {
 		Class.forName(driver);
 		Connection con = DriverManager.getConnection(db);
 		con.setAutoCommit(autoCommit);
-		System.out.println("Opened database successfully");
 		return con;
 	}
 
 	private static void createTableBooking()
 	{
+		System.out.println("createTableBooking: ...");
 		Connection c = null;
 		Statement stmt = null;
 		try {
@@ -145,7 +148,7 @@ public class BookingDBController {
 	
 	private static final String INSERT_BOOKING 
 		= "INSERT INTO Booking (travelerID, roomID, fromDate, toDate) "
-		+ "VALUES (?, ?, ?, ?,)";
+		+ "VALUES (?, ?, ?, ?)";
 	
 	private static final String UPDATE_BOOKING_DATES
 		= "UPDATE Booking "
