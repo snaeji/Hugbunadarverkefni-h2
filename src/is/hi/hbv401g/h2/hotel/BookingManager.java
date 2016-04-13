@@ -5,6 +5,12 @@ import java.util.List;
 
 public class BookingManager {
 	
+	private BookingDBController bookingDBC;
+	
+	public BookingManager() {
+		bookingDBC = new BookingDBController();
+	}
+	
 	// FINISHED
 	public Booking book(Traveler traveler, List<Room> rooms, Date fromDate, Date toDate) {
 		Integer id = null;
