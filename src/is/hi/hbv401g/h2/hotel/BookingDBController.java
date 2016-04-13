@@ -43,6 +43,10 @@ public class BookingDBController {
 	}
 	*/
 	
+	public BookingDBController() {
+		createTableBooking();
+	}
+	
 	static void cancelBooking(Booking booking) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
