@@ -136,7 +136,7 @@ public class BookingDBController {
 		} catch ( Exception e ) {
 			System.err.println( e.getClass().getName() + ": " + e.getMessage() );
 			System.exit(0);
-		}   System.out.println("createTableBooking: ...");
+		}   System.out.println("createTableBooking: success");
 	}
 	
 	private static final String CREATE_BOOKING_TABLE 
