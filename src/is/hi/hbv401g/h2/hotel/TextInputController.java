@@ -7,15 +7,14 @@ import java.util.List;
 
 public class TextInputController {
 	
-//	private TextView textView;
 	private static HotelManager hotelManager;
 	private static TextView textView;
 	private static List<Room> lastResult;
 	private static BookingManager bookingManager;
 	
 	// Expect to get the input in one of the two following ways:
-	// searchWIthAddres: minPrice, maxPrice, minStars, maxStars, street, city, zipCode
-	// searchWithCoords: minPrice, minStars, maxStars, radius coordinates
+	// searchWIthAddress: minPrice, maxPrice, minStars, maxStars, street, city, zipCode, count, fromDate, toDate
+	// searchWithCoords: minPrice, minStars, maxStars, radius coordinates, count, fromDate, toDate
 	public static void main(String[] args) {
 		Calendar calFrom = Calendar.getInstance();
 		calFrom.setTimeInMillis(0);
