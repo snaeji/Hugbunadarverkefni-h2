@@ -12,7 +12,7 @@ public class BookingManager {
 	}
 	
 	// FINISHED
-	public Booking book(Traveler traveler, List<Room> rooms, Date fromDate, Date toDate) {
+	public static Booking book(Traveler traveler, List<Room> rooms, Date fromDate, Date toDate) {
 		Integer id = null;
 		Booking booking = new Booking(traveler, rooms, fromDate, toDate, id);
 		BookingDBController.book(booking);
