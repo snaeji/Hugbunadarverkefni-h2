@@ -8,11 +8,6 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class HotelManager {
-//	private HotelDBController hotelDBController;
-
-//	public HotelManager(){
-//		this.hotelDBController = new HotelDBController();
-//	};
 
 	public static List<Room> searchWithAddress(int[] priceRange,int minStars, String street, String city, String zipCode, int count, Date fromDate, Date toDate){
 		return HotelDBController.searchWithAddress(priceRange[0],priceRange[1],minStars,street,city,zipCode,count, fromDate, toDate);
@@ -26,7 +21,7 @@ public class HotelManager {
 		for(int i=0;i<rooms.size();i++) {
 			Room room = rooms.get(i);
 			String[] dealerInfo = {room.getHotel().getName(), "555-5555", "hotel@hotel.com"};
-			SearchResult searchResult = new SearchResult(room, fromDate, toDate, 0, 0, 0, 0, 0, 0, room.getHotel().getCity(), dealerInfo );
+			SearchResult searchResult = new SearchResult(room, fromDate, toDate, priceRange, room.getHotel().getCity(), dealerInfo);
 			searchResults.add(searchResult);
 		}
 		return searchResults;

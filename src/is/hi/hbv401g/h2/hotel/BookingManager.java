@@ -9,13 +9,7 @@ import metaSearchEngine.program.UserClass;
 
 public class BookingManager {
 	
-//	private BookingDBController bookingDBC;
-//	
-//	public BookingManager() {
-//		bookingDBC = new BookingDBController();
-//	}
-	
-	// FINISHED
+// uselesss comment for Haukur
 	public static Booking book(UserClass traveler, List<Room> rooms, Date fromDate, Date toDate) {
 		Integer id = null;
 		Booking booking = new Booking(traveler, rooms, fromDate, toDate, id);
@@ -23,38 +17,34 @@ public class BookingManager {
 		return booking;
 	}
 	
-	public static Booking book(List<HotelAbstract> sadThing) {
+	public static Booking book(UserClass traveler, List<HotelAbstract> sadThing) {
 		List<Room> rooms = new ArrayList<Room>();
 		SearchResult searchResult;
+		Date fromDate = sadThing.get(0).getStartTime();
+		Date toDate = sadThing.get(0).getEndTime();
 		
-		for(int i=0;i<sadThing.size();i++) )
-			 = (SearchResult)sadThing;
-		Room room = searchResult.getRoom();
+		for(int i=0;i<sadThing.size();i++) {
+			searchResult = (SearchResult)sadThing.get(i);
+			rooms.add(searchResult.getRoom());
+		}
+		
 		Integer id = null;
 		Booking booking = new Booking(traveler, rooms, fromDate, toDate, id);
 		BookingDBController.book(booking);
 		return booking;
-	}
-	
-	// NOT USED - SHOULD BE REMOVED?
-//	Booking[] getBookings() {
-//		return bookingDBController.getBookings();
-//	}
-	
-	// FINISHED
+	}	
+
 	/*
 	public Booking[] getBookingsByTraveler(Traveler traveler) {
 		Booking[] bookings = bookingDBController.getBookingsByTraveler(traveler);
 		return bookings;
 	}*/
 	
-	// FINISHED
 	public void cancelBooking(Booking booking) {
 		BookingDBController.cancelBooking(booking);
 		booking.cancelReserve();
 	}
 	
-	// FINISHED
 	public boolean editBooking(Booking booking, Date fromDate, Date toDate) {
 		if(booking.setDates(fromDate, toDate)) return true;
 		return false;
