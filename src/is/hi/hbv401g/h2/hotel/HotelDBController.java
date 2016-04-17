@@ -15,7 +15,7 @@ public class HotelDBController {
 		insertIntoDBStuff();
 	}
 
-	public List<Room> searchWithAddress(int minPrice,int maxPrice,int minStars, String street, String city, String zipCode,int count, Date fromDate, Date toDate){
+	public static List<Room> searchWithAddress(int minPrice,int maxPrice,int minStars, String street, String city, String zipCode,int count, Date fromDate, Date toDate){
 		List<Room> rooms = executeQueryRooms();
 		for(int i = rooms.size()-1;i>=0;i--){
 			if(		  !(rooms.get(i).getPrice()<=maxPrice
@@ -46,7 +46,7 @@ public class HotelDBController {
 		return rooms;
 	};
 
-	public List<Room> searchWithCoords(int minPrice,int maxPrice,int minStars, double radius, Coordinates coords,int count, Date fromDate, Date toDate){
+	public static List<Room> searchWithCoords(int minPrice,int maxPrice,int minStars, double radius, Coordinates coords,int count, Date fromDate, Date toDate){
 		List<Room> rooms = executeQueryRooms();
 		for(int i = rooms.size()-1;i>=0;i--){
 			if(		  !(rooms.get(i).getPrice()<=maxPrice
@@ -102,7 +102,7 @@ public class HotelDBController {
 	}
 	
 	@SuppressWarnings("deprecation")
-	private List<Room> executeQueryRooms(){
+	private static List<Room> executeQueryRooms(){
 		List <Room> rooms = new ArrayList<Room>();
 		List <Integer> id = new ArrayList<Integer>();
 		List <Date> reserveDates = new ArrayList<Date>();

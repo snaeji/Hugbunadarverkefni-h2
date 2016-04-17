@@ -5,11 +5,11 @@ import java.util.List;
 
 public class BookingManager {
 	
-	private BookingDBController bookingDBC;
-	
-	public BookingManager() {
-		bookingDBC = new BookingDBController();
-	}
+//	private BookingDBController bookingDBC;
+//	
+//	public BookingManager() {
+//		bookingDBC = new BookingDBController();
+//	}
 	
 	// FINISHED
 	public static Booking book(Traveler traveler, List<Room> rooms, Date fromDate, Date toDate) {
