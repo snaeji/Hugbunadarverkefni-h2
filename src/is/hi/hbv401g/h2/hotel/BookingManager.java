@@ -1,8 +1,10 @@
 package is.hi.hbv401g.h2.hotel;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import metaSearchEngine.program.HotelAbstract;
 import metaSearchEngine.program.UserClass;
 
 public class BookingManager {
@@ -15,6 +17,19 @@ public class BookingManager {
 	
 	// FINISHED
 	public static Booking book(UserClass traveler, List<Room> rooms, Date fromDate, Date toDate) {
+		Integer id = null;
+		Booking booking = new Booking(traveler, rooms, fromDate, toDate, id);
+		BookingDBController.book(booking);
+		return booking;
+	}
+	
+	public static Booking book(List<HotelAbstract> sadThing) {
+		List<Room> rooms = new ArrayList<Room>();
+		SearchResult searchResult;
+		
+		for(int i=0;i<sadThing.size();i++) )
+			 = (SearchResult)sadThing;
+		Room room = searchResult.getRoom();
 		Integer id = null;
 		Booking booking = new Booking(traveler, rooms, fromDate, toDate, id);
 		BookingDBController.book(booking);

@@ -18,24 +18,18 @@ public class HotelManager {
 		return HotelDBController.searchWithAddress(priceRange[0],priceRange[1],minStars,street,city,zipCode,count, fromDate, toDate);
 	};
 	
+	// spes aðferð svo að GUI grúppu lausnin virki
 	public static List<HotelAbstract> searchWithAddress(int[] priceRange,int minStars, String city, int count, Date fromDate, Date toDate){
 		List<Room> rooms = HotelDBController.searchWithAddress(priceRange[0],priceRange[1],minStars,null,city,null,count, fromDate, toDate);
 		List<HotelAbstract> searchResults = new ArrayList<HotelAbstract>();
-		
-//		Room room, Date startTime, Date endTime, int numSingle, int numDouble, int numMulti, int priceSingle,
-//		int priceDouble, int priceMulti, String Loc, String[] dealerInfo
-		
-//		public HotelAbstract(Date startTime, Date endTime, int[] priceRange, String location, String[] dealerInfo) {
-
-		
 		
 		for(int i=0;i<rooms.size();i++) {
 			Room room = rooms.get(i);
 			String[] dealerInfo = {room.getHotel().getName(), "555-5555", "hotel@hotel.com"};
 			SearchResult searchResult = new SearchResult(room, fromDate, toDate, 0, 0, 0, 0, 0, 0, room.getHotel().getCity(), dealerInfo );
 			searchResults.add(searchResult);
-			return searchResults;
 		}
+		return searchResults;
 	};
 	
 	
