@@ -8,11 +8,6 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class HotelManager {
-//	private HotelDBController hotelDBController;
-
-//	public HotelManager(){
-//		this.hotelDBController = new HotelDBController();
-//	};
 	
 	public static void init() {
 		HotelDBController.init();
