@@ -10,7 +10,7 @@ public class TextInputController {
 	private static HotelManager hotelManager;
 	private static TextView textView;
 	private static List<Room> lastResult;
-	private static BookingManager bookingManager;
+//	private static BookingManager bookingManager;
 	
 	// Expect to get the input in one of the two following ways:
 	// searchWIthAddress: minPrice, maxPrice, minStars, maxStars, street, city, zipCode, count, fromDate, toDate
@@ -34,8 +34,8 @@ public class TextInputController {
 		System.out.println(dateTo.toString());
 		
 		textView = new TextView();
-		bookingManager = new BookingManager();
-		hotelManager = new HotelManager();
+//		bookingManager = new BookingManager();
+//		hotelManager = new HotelManager();
 		
 		textView.greet();
 		int indexToBook = searchForRooms(dateFrom,dateTo);
@@ -46,7 +46,7 @@ public class TextInputController {
 		
 		
 		
-		bookingManager.book(new Traveler("arnar",0), roomToBook, dateFrom, dateTo);
+		BookingManager.book(new Traveler("arnar",0), roomToBook, dateFrom, dateTo);
 		
 		textView.farewell();
 	}
@@ -55,9 +55,11 @@ public class TextInputController {
 		String searchMethod = textView.askForSearchMethod();
 		if(searchMethod.equalsIgnoreCase("1")) {
 			String[] searchParameters = textView.askForSearchParametersAddress();
-			searchResults = hotelManager.searchWithAddress(
-					Integer.parseInt(searchParameters[0]), 
-					Integer.parseInt(searchParameters[1]), 
+			searchResults = HotelManager.searchWithAddress(
+					new int[] {
+							Integer.parseInt(searchParameters[0]), 
+							Integer.parseInt(searchParameters[1])
+					}, 
 					Integer.parseInt(searchParameters[2]), 
 					searchParameters[4], 
 					searchParameters[5], 
