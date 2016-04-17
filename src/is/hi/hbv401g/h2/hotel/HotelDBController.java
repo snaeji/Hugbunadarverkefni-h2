@@ -180,6 +180,87 @@ public class HotelDBController {
 		return rooms;
 	}
 	
+	@SuppressWarnings("deprecation")
+	private static List<Room> searchRoomById(int roomId){
+		List <Room> rooms = new ArrayList<Room>();
+		List <Integer> id = new ArrayList<Integer>();
+		List <Date> reserveDates = new ArrayList<Date>();
+		List <Integer> reserveCount = new ArrayList<Integer>();
+		
+		//Get reservedDates
+		
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet rs = null;
+		try {
+			Class.forName("org.sqlite.JDBC");
+			connection = DriverManager.getConnection("jdbc:sqlite:hotels.db");
+			connection.setAutoCommit(false);
+			System.out.println("executeQueryRooms: begin");
+			
+			preparedStatement = connection.prepareStatement("SELECT * FROM Reservations");
+			rs = preparedStatement.executeQuery(); //Queery
+			while(rs.next()){
+				id.add(rs.getInt("id"));
+				reserveDates.add(new Date(rs.getLong("date")));
+				reserveCount.add(rs.getInt("count"));
+				
+			}
+			preparedStatement.close();
+			connection.close();
+		} catch ( Exception e ) {
+			System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+			System.exit(0);
+			return rooms;
+		}
+		
+		//Get Rooms & Hotels.... and put reserveDates & reserveCount & Hotels etc into Rooms
+		
+		connection = null;
+		preparedStatement = null;
+		rs = null;
+		try {
+			Class.forName("org.sqlite.JDBC");
+			connection = DriverManager.getConnection("jdbc:sqlite:hotels.db");
+			connection.setAutoCommit(false);
+			System.out.println("executeQueryRooms: next");
+			
+			preparedStatement = connection.prepareStatement("SELECT * from Rooms,Hotels WHERE Hotels.name = Rooms.hotel");
+			rs = preparedStatement.executeQuery();
+			
+			while(rs.next()){
+				if(rs.getInt("id")==roomId){
+					List <Date> tempReserveDates = new ArrayList<Date>();
+					List <Integer> tempReserveCount = new ArrayList<Integer>();
+					
+					//Create the reserveDates and reserveCount lists for this specific room
+					for(int i = 0;i<id.size();i++){
+						if(id.get(i)==rs.getInt("id"))
+						{
+							tempReserveDates.add(reserveDates.get(i));
+							tempReserveCount.add(reserveCount.get(i));
+						}
+					}
+					//Hotel(int stars, String name, String type, String street, String streetNumber, String city, String zipCode, Coordinates coordinates)
+					Hotel hotel = new Hotel(rs.getInt("stars"),rs.getString("name"),rs.getString("type"),rs.getString("street"),rs.getString("streetNumber"),rs.getString("city"),rs.getString("zipCode"),new Coordinates(rs.getDouble("latitude"),rs.getDouble("longtitude")));
+					//Room(int price, int area, int beds, int bedrooms, int roomCount, List<Date> reservedDates, List<Integer> reservedCounter, Hotel hotel, int id)
+					Room room = new Room(rs.getInt("price"),rs.getInt("area"),rs.getInt("beds"),rs.getInt("bedrooms"),rs.getInt("roomCount"),tempReserveDates,tempReserveCount,hotel,rs.getInt("id"));
+					rooms.add(room);
+				}
+				
+			}
+			
+			preparedStatement.close();
+			connection.close();
+		} catch ( Exception e ) {
+			System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+			System.exit(0);
+			return rooms;
+		}
+		System.out.println("executeQueryRooms: success");
+		return rooms;
+	}
+	
 	 private static void createDB(){
 		@SuppressWarnings("unused")
 		Connection c = null;
