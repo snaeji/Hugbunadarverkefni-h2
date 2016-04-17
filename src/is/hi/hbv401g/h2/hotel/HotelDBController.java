@@ -7,86 +7,8 @@ import java.util.Date;
 import java.util.List;
 
 public class HotelDBController {
-
-	private static final String DRIVER = "org.sqlite.JDBC";
-	private static final String DB = "jdbc:sqlite:hotels.db";
-	private static final DateFormat DF = new SimpleDateFormat("dd-MM-yyyy"); 
-
-	private static final String SELECT_ROOM_WITH_ID
-		= "SELECT * FROM Rooms WHERE ID =?";
 	
-	private static final String SELECT_HOTEL_WITH_ID
-		= "SELECT * FROM Hotels WHERE ID =?";
-
-	private static final String INSERT_ROOM 
-		= "INSERT INTO Rooms (id,price,area,beds,bedrooms,roomCount,hotel,stars) "
-		+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-	
-	private static final String INSERT_HOTEL
-		= "INSERT INTO Hotels (name,stars,type,street,streetnumber,city,zipCode,latitude,longtitude) "
-		+ "VALUES (?, ?,?, ?,?,  ?, ?, ?,?)";
-	
-	private static final String INSERT_RESERVATION
-		= "INSERT INTO Reservations (id,date,count) "
-		+ "VALUES (?, ?, ?)";
-	
-	static List<Hotel> getHotelsById(List<String> hotelIds) {
-		List<Hotel> hotels = new ArrayList<Hotel>();
-		PreparedStatement pstmt = null;
-		Connection con = null;
-		ResultSet rs = null;
-		try {
-			Class.forName(DRIVER);
-			con = DriverManager.getConnection(DB);
-			con.setAutoCommit(false);
-			pstmt = con.prepareStatement(SELECT_HOTEL_WITH_ID);
-			for(String id : hotelIds) {
-				pstmt.setString(1, id);
-				rs = pstmt.executeQuery();
-				Hotel hotel = new Hotel(rs.getInt("stars"),rs.getString("name"),rs.getString("type"),rs.getString("street"),rs.getString("streetNumber"),
-						rs.getString("city"),rs.getString("zipCode"),new Coordinates(rs.getDouble("latitude"),rs.getDouble("longtitude")));
-				hotels.add(hotel);
-			}
-			con.commit();
-			pstmt.close();
-			con.close();
-			
-		} catch (Exception e) {
-			System.err.println(e.getMessage());
-		}
-		return hotels;
-	}
-	
-	/*static List<Room> getRoomsById(List<Integer> roomIds) {
-		List<Room> rooms = new ArrayList<Room>();
-		PreparedStatement pstmt = null;
-		Connection con = null;
-		ResultSet rs = null;
-		try {
-			Class.forName(DRIVER);
-			con = DriverManager.getConnection(DB);
-			con.setAutoCommit(false);
-			pstmt = con.prepareStatement(SELECT_ROOM_WITH_ID);
-			for(Integer id : roomIds) {
-				pstmt.setInt(1, id);
-				rs = pstmt.executeQuery();
-				rooms.add(room);
-			}
-			con.commit();
-			pstmt.close();
-			con.close();
-			
-		} catch (Exception e) {
-			System.err.println(e.getMessage());
-		}
-		return rooms;
-	}*/
-	
-/*	private static Hotel resultSetToHotel(ResultSet rs) throws SQLException {
-		Hotel hotel = new Hotel(rs.getInt("stars"),rs.getString("name"),rs.getString("type"),rs.getString("street"),rs.getString("streetNumber"),rs.getString("city"),rs.getString("zipCode"),new Coordinates(rs.getDouble("latitude"),rs.getDouble("longtitude")));
-	}*/
-	
-	public static void init(){
+	static void init(){
 		createDB();
 		createTableHotels();
 		createTableRooms();
@@ -94,7 +16,7 @@ public class HotelDBController {
 		insertIntoDBStuff();
 	}
 
-	public static List<Room> searchWithAddress(int minPrice,int maxPrice,int minStars, String street, String city, String zipCode,int count, Date fromDate, Date toDate){
+	static List<Room> searchWithAddress(int minPrice,int maxPrice,int minStars, String street, String city, String zipCode,int count, Date fromDate, Date toDate){
 		List<Room> rooms = executeQueryRooms();
 		for(int i = rooms.size()-1;i>=0;i--){
 			if(		  !(rooms.get(i).getPrice()<=maxPrice
@@ -125,7 +47,7 @@ public class HotelDBController {
 		return rooms;
 	};
 
-	public static List<Room> searchWithCoords(int minPrice,int maxPrice,int minStars, double radius, Coordinates coords,int count, Date fromDate, Date toDate){
+	static List<Room> searchWithCoords(int minPrice,int maxPrice,int minStars, double radius, Coordinates coords,int count, Date fromDate, Date toDate){
 		List<Room> rooms = executeQueryRooms();
 		for(int i = rooms.size()-1;i>=0;i--){
 			if(		  !(rooms.get(i).getPrice()<=maxPrice
