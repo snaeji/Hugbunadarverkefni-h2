@@ -8,7 +8,16 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class HotelManager {
+//	private HotelDBController hotelDBController;
 
+//	public HotelManager(){
+//		this.hotelDBController = new HotelDBController();
+//	};
+	
+	public static void init() {
+		HotelDBController.init();
+	}
+	
 	public static List<Room> searchWithAddress(int[] priceRange,int minStars, String street, String city, String zipCode, int count, Date fromDate, Date toDate){
 		return HotelDBController.searchWithAddress(priceRange[0],priceRange[1],minStars,street,city,zipCode,count, fromDate, toDate);
 	};

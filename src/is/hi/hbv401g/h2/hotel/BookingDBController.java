@@ -46,7 +46,11 @@ public class BookingDBController {
 	}
 	*/
 	
-	public BookingDBController() {
+//	public BookingDBController() {
+//		createTableBooking();
+//	}
+	
+	public static void init() {
 		createTableBooking();
 	}
 	
