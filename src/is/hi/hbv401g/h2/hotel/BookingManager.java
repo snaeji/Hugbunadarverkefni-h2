@@ -17,6 +17,7 @@ public class BookingManager {
 		return booking;
 	}
 	
+	// spes aðferð svo að GUI grúppu lausnin virki
 	public static Booking book(UserClass traveler, List<HotelAbstract> sadThing) {
 		List<Room> rooms = new ArrayList<Room>();
 		SearchResult searchResult;
