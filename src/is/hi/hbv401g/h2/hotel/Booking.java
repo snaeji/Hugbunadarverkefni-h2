@@ -1,6 +1,9 @@
 package is.hi.hbv401g.h2.hotel;
 
 import java.util.List;
+
+import metaSearchEngine.program.UserClass;
+
 import java.util.Date;
 //import java.util.Calendar;
 
@@ -13,12 +16,12 @@ public class Booking {
 	private Traveler traveler;
 	private Integer id;
 	
-	public Booking(Traveler traveler, List<Room> room, Date fromDate, Date toDate, Integer id) {
+	public Booking(UserClass traveler, List<Room> room, Date fromDate, Date toDate, Integer id) {
 		this.rooms = room;
 		this.fromDate = fromDate;
 		this.toDate = toDate;
 		this.hasReserved = false;
-		this.traveler = traveler;
+		this.traveler = (Traveler)traveler;
 		this.id = id;
 		//if(!room.reserve(this)) { // ÞARF AÐ GERA LYKKJU HÉR ÞAR SEM ÞETTA ER FYLKI AF ROOM (IMPORTANT!?)
 		//	return null;
