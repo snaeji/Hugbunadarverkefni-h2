@@ -9,12 +9,10 @@ import metaSearchEngine.program.UserClass;
 
 public class BookingManager {
 	
-	public static void init() {
-		BookingDBController.init();
-	}
-	
 // uselesss comment for Haukur
 	public static Booking book(UserClass traveler, List<Room> rooms, Date fromDate, Date toDate) {
+		BookingDBController.init();
+		
 		Integer id = null;
 		Booking booking = new Booking(traveler, rooms, fromDate, toDate, id);
 		BookingDBController.book(booking);

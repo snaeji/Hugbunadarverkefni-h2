@@ -9,17 +9,15 @@ import java.util.Date;
 
 public class HotelManager {
 	
-	public static void init() {
-		HotelDBController.init();
-	}
-	
 	public static List<Room> searchWithAddress(int[] priceRange,int minStars, String street, String city, String zipCode, int count, Date fromDate, Date toDate){
 		return HotelDBController.searchWithAddress(priceRange[0],priceRange[1],minStars,street,city,zipCode,count, fromDate, toDate);
 	};
 	
 	// spes aðferð svo að GUI grúppu lausnin virki
-	public static List<HotelAbstract> searchWithAddress(int[] priceRange,int minStars, String city, int count, Date fromDate, Date toDate){
-		List<Room> rooms = HotelDBController.searchWithAddress(priceRange[0],priceRange[1],minStars,null,city,null,count, fromDate, toDate);
+	public static List<HotelAbstract> searchWithAddress(int[] priceRange,int minStars, String city, Date fromDate, Date toDate){
+		HotelDBController.init();
+		
+		List<Room> rooms = HotelDBController.searchWithAddress(priceRange[0],priceRange[1],minStars,null,city,null,1, fromDate, toDate);
 		List<HotelAbstract> searchResults = new ArrayList<HotelAbstract>();
 		
 		for(int i=0;i<rooms.size();i++) {
