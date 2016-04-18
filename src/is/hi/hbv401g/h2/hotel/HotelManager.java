@@ -25,7 +25,7 @@ public class HotelManager {
 		for(int i=0;i<rooms.size();i++) {
 			Room room = rooms.get(i);
 			String[] dealerInfo = {room.getHotel().getName(), "555-5555", "hotel@hotel.com"};
-			SearchResult searchResult = new SearchResult(room, fromDate, toDate, priceRange, room.getHotel().getCity(), dealerInfo);
+			SearchResult searchResult = new SearchResult(room, fromDate, toDate, priceRange, room.getHotel().getCity(), dealerInfo, room.getPrice(), room.getArea(), room.getBeds(), room.getBedrooms());
 			searchResults.add(searchResult);
 		}
 		return searchResults;

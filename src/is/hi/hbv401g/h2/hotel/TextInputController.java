@@ -37,7 +37,6 @@ public class TextInputController {
 //		bookingManager = new BookingManager();
 //		hotelManager = new HotelManager();
 		
-		textView.greet();
 		int indexToBook = searchForRooms(dateFrom,dateTo);
 		
 		
