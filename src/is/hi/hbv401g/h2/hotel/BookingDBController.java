@@ -41,7 +41,7 @@ public class BookingDBController {
 		} catch (Exception e) {
 			System.err.println( e.getClass().getName() + ": " + e.getMessage() );
 			System.exit(0);
-		}   // System.out.println("Canceled booking");
+		}   System.out.println("Canceled booking");
 		return null;
 	}
 	*/
@@ -55,7 +55,7 @@ public class BookingDBController {
 	}
 	
 	static void cancelBooking(Booking booking) {
-		// System.out.println("cancelBooking: ...");
+		System.out.println("cancelBooking: ...");
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
@@ -69,11 +69,11 @@ public class BookingDBController {
 		} catch (Exception e) {
 			System.err.println( e.getClass().getName() + ": " + e.getMessage() );
 			System.exit(0);
-		}   // System.out.println("cancelBooking: success");
+		}   System.out.println("cancelBooking: success");
 	}
 	
 	static Booking editBooking(Booking booking, Date toDate, Date fromDate) {
-		// System.out.println("editBooking: ...");
+		System.out.println("editBooking: ...");
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
@@ -89,13 +89,13 @@ public class BookingDBController {
 		} catch (Exception e) {
 			System.err.println( e.getClass().getName() + ": " + e.getMessage() );
 			System.exit(0);
-		}   // System.out.println("editBooking: success");
+		}   System.out.println("editBooking: success");
 		return booking;
 		// 
 	}
 	
 	static void book(Booking booking) {
-		// System.out.println("book: ...");
+		System.out.println("book: ...");
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
@@ -115,7 +115,7 @@ public class BookingDBController {
 		} catch (Exception e) {
 			System.err.println( e.getClass().getName() + ": " + e.getMessage() );
 			System.exit(0);
-		}   // System.out.println("Inserted booking");
+		}   System.out.println("Inserted booking");
 	}
 
 	private static Connection establishConnection(String driver, String db, boolean autoCommit) throws ClassNotFoundException, SQLException {
@@ -127,7 +127,7 @@ public class BookingDBController {
 
 	private static void createTableBooking()
 	{
-		// System.out.println("createTableBooking: ...");
+		System.out.println("createTableBooking: ...");
 		Connection c = null;
 		Statement stmt = null;
 		try {
@@ -140,7 +140,7 @@ public class BookingDBController {
 		} catch ( Exception e ) {
 			System.err.println( e.getClass().getName() + ": " + e.getMessage() );
 			System.exit(0);
-		}   // System.out.println("createTableBooking: success");
+		}   System.out.println("createTableBooking: success");
 	}
 	
 	private static final String CREATE_BOOKING_TABLE 
