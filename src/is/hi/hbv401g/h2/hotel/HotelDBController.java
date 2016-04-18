@@ -36,12 +36,12 @@ public class HotelDBController {
 		}
 		if(city!=null){
 			for(int i = rooms.size()-1;i>=0;i--){
-				if(rooms.get(i).getHotel().getCity().compareTo(city)!=0&&street.compareTo("")!=0)rooms.remove(i);
+				if(rooms.get(i).getHotel().getCity().compareTo(city)!=0&&city.compareTo("")!=0)rooms.remove(i);
 			}
 		}
 		if(zipCode!=null){
 			for(int i = rooms.size()-1;i>=0;i--){
-				if(rooms.get(i).getHotel().getZipCode().compareTo(zipCode)!=0&&street.compareTo("")!=0)rooms.remove(i);
+				if(rooms.get(i).getHotel().getZipCode().compareTo(zipCode)!=0&&zipCode.compareTo("")!=0)rooms.remove(i);
 			}
 		}
 		return rooms;
