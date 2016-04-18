@@ -10,6 +10,7 @@ import java.util.Date;
 public class HotelManager {
 	
 	public static List<Room> searchWithAddress(int[] priceRange,int minStars, String street, String city, String zipCode, int count, Date fromDate, Date toDate){
+		HotelDBController.init();
 		return HotelDBController.searchWithAddress(priceRange[0],priceRange[1],minStars,street,city,zipCode,count, fromDate, toDate);
 	};
 	

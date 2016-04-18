@@ -21,6 +21,8 @@ public class BookingManager {
 	
 	// spes aðferð svo að GUI grúppu lausnin virki
 	public static Booking book(UserClass traveler, List<HotelAbstract> sadThing) {
+		BookingDBController.init();
+		
 		List<Room> rooms = new ArrayList<Room>();
 		SearchResult searchResult;
 		Date fromDate = sadThing.get(0).getStartTime();
