@@ -19,7 +19,7 @@ public class BookingManager {
 		return booking;
 	}
 	
-	// spes aðferð svo að GUI grúppu lausnin virki
+	// aðferð svo að GUI grúppu lausnin virki
 	public static Booking book(UserClass traveler, List<HotelAbstract> sadThing) {
 		BookingDBController.init();
 		

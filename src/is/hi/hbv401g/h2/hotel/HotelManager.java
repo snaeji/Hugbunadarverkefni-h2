@@ -14,7 +14,7 @@ public class HotelManager {
 		return HotelDBController.searchWithAddress(priceRange[0],priceRange[1],minStars,street,city,zipCode,count, fromDate, toDate);
 	};
 	
-	// spes aðferð svo að GUI grúppu lausnin virki
+	// aðferð svo að GUI grúppu lausnin virki
 	public static List<HotelAbstract> searchWithAddress(int[] priceRange,int minStars, String city, Date fromDate, Date toDate){
 		HotelDBController.init();
 		
